@@ -1,12 +1,12 @@
 [package]
 name = "bardecoder"
-version = "0.3.0"
-authors = ["Mark Arts <piderman+github@gmail.com>"]
+version = "0.3.1"
+authors = ["Mark Arts <piderman+github@gmail.com>", "Pixel Coda <calebsmithwoolrich@gmail.com>"]
 edition = "2018"
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/piderman314/bardecoder"
-homepage = "https://github.com/piderman314/bardecoder"
+repository = "https://github.com/pixelcoda/bardecoder"
+homepage = "https://github.com/pixelcoda/bardecoder"
 keywords = ["qr"]
 categories = ["encoding","multimedia::images"]
 exclude = ["/.travis.yml", "/tests/*"]
@@ -15,7 +15,7 @@ Detect and decode QR Codes
 """
 
 [dependencies]
-image = ">= 0.22, <= 0.23"
+image = "0.23.14"
 log = "0.4"
 failure = "0.1"
 failure_derive = "0.1"
@@ -28,4 +28,4 @@ fail-on-warnings=[]
 benchmark=[]
 
 [badges]
-travis-ci = { repository = "piderman314/bardecoder" }
+travis-ci = { repository = "pixelcoda/bardecoder" }

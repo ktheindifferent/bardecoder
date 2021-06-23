@@ -1,5 +1,7 @@
 # Bardecoder
 
+Forked to fix dependency issue with image 0.23.14 crate.
+
 Detect and decode QR Codes, written in 100% Rust.
 
 * [Background](#background)
