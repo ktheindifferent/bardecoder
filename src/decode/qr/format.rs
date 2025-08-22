@@ -14,8 +14,14 @@ pub fn format(data: &QRData) -> Result<(ECLevel, Box<QRMask>), QRError> {
 
     let format = format?;
 
-    let correction = error_correction(2 * format[0] + format[1]).unwrap();
-    let mask = mask(4 * format[2] + 2 * format[3] + format[4]).unwrap();
+    let correction = error_correction(2 * format[0] + format[1])
+        .ok_or_else(|| QRError {
+            msg: format!("Invalid error correction level: {:02b}", 2 * format[0] + format[1]),
+        })?;
+    let mask = mask(4 * format[2] + 2 * format[3] + format[4])
+        .ok_or_else(|| QRError {
+            msg: format!("Invalid mask pattern: {:03b}", 4 * format[2] + 2 * format[3] + format[4]),
+        })?;
 
     Ok((correction, mask))
 }

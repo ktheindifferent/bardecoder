@@ -113,7 +113,8 @@ impl Chomp {
             self.current_byte = self.bytes.next();
             self.bits_left_in_byte = BitCount(8);
 
-            let nibble = self.nibble(bits_to_go).unwrap(); // we just peeked
+            let nibble = self.nibble(bits_to_go)
+                .expect("nibble() should succeed after successful peek()"); // we just peeked
 
             Some(result + nibble)
         }

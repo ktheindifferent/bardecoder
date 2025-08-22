@@ -94,17 +94,15 @@ impl Detect<GrayImage> for LineScan {
             for (refine_func, dx, dy, is_diagonal) in &refine_func {
                 let vert = refine_func(&self, prepared, &finder, module_size);
 
-                if vert.is_none() {
+                let Some(vert) = vert else {
                     last_pixel = p.channels()[0];
                     pattern.slide();
-
                     continue 'pixels;
-                }
+                };
 
                 if !is_diagonal {
                     // Adjust the candidate location with the refined candidate and module size,
                     // exchept when refining the diagonal because that is unreliable on lower resolutions
-                    let vert = vert.unwrap();
                     let half_finder = 3.5 * vert.last_module_size;
                     finder.x = vert.location.x - dx * half_finder;
                     finder.y = vert.location.y - dy * half_finder;

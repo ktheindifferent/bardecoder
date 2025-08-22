@@ -33,7 +33,7 @@ impl BlockedMean {
 
 impl Prepare<DynamicImage, GrayImage> for BlockedMean {
     fn prepare(&self, input: &DynamicImage) -> GrayImage {
-        let grayscale = input.to_luma();
+        let grayscale = input.to_luma8();
 
         let dimensions = grayscale.dimensions();
         let width = ImageCoord(dimensions.0);
@@ -66,13 +66,13 @@ impl BlockedMean {
 
         for (x, y, p) in grayscale.enumerate_pixels() {
             let coords = as_block_coords(ImageCoord(x), ImageCoord(y), self.block_size);
-            let mut stats = &mut blocks[to_index(coords, block_width)];
+            let stats = &mut blocks[to_index(coords, block_width)];
 
             stats.total += u64::from(p.channels()[0]);
             stats.count += 1;
         }
 
-        for mut stat in &mut blocks {
+        for stat in &mut blocks {
             stat.mean = stat.total as f64 / stat.count as f64;
         }
 
