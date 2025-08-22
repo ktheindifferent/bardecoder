@@ -2,6 +2,7 @@ use image::DynamicImage;
 use image::GrayImage;
 
 use failure::Error;
+use failure_derive::Fail;
 
 use crate::decode::{Decode, QRDecoder, QRDecoderWithInfo};
 use crate::detect::{Detect, LineScan, Location};
@@ -9,6 +10,20 @@ use crate::extract::{Extract, QRExtractor};
 use crate::prepare::{BlockedMean, Prepare};
 
 use crate::util::qr::{QRData, QRError, QRInfo, QRLocation};
+
+/// Error type for DecoderBuilder
+#[derive(Debug, Fail)]
+pub enum BuilderError {
+    /// The prepare component is required but was not provided
+    #[fail(display = "Cannot build Decoder without Prepare component")]
+    MissingPrepare,
+    /// The detect component is required but was not provided
+    #[fail(display = "Cannot build Decoder without Detect component")]
+    MissingDetect,
+    /// The QR extract and decode components are required but were not provided
+    #[fail(display = "Cannot build Decoder without QR extract and decode components")]
+    MissingQR,
+}
 
 /// Struct to hold logic to do the entire decoding
 pub struct Decoder<IMG, PREPD, RESULT> {
@@ -59,8 +74,15 @@ impl<IMG, PREPD, RESULT> Decoder<IMG, PREPD, RESULT> {
 /// * decode: QRDecoder
 ///
 /// This is meant to provide a good balance between speed and accuracy
+///
+/// # Panics
+///
+/// This function will panic if the default builder fails to build,
+/// which should never happen as all components are provided.
 pub fn default_decoder() -> Decoder<DynamicImage, GrayImage, String> {
-    default_builder().build()
+    default_builder()
+        .build()
+        .expect("Default decoder should always build successfully")
 }
 
 /// Create a default Decoder that also returns information about the decoded QR Code
@@ -73,8 +95,15 @@ pub fn default_decoder() -> Decoder<DynamicImage, GrayImage, String> {
 /// * decode: QRDecoderWithInfo
 ///
 /// This is meant to provide a good balance between speed and accuracy
+///
+/// # Panics
+///
+/// This function will panic if the default builder fails to build,
+/// which should never happen as all components are provided.
 pub fn default_decoder_with_info() -> Decoder<DynamicImage, GrayImage, (String, QRInfo)> {
-    default_builder_with_info().build()
+    default_builder_with_info()
+        .build()
+        .expect("Default decoder with info should always build successfully")
 }
 
 /// Builder struct to create a Decoder
@@ -131,15 +160,22 @@ impl<IMG, PREPD, RESULT> DecoderBuilder<IMG, PREPD, RESULT> {
 
     /// Build actual Decoder
     ///
-    /// # Panics
+    /// # Errors
     ///
-    /// Will panic if any of the required components are missing
-    pub fn build(self) -> Decoder<IMG, PREPD, RESULT> {
-        Decoder {
-            prepare: self.prepare.expect("Cannot build Decoder without Prepare component"),
-            detect: self.detect.expect("Cannot build Decoder without Detect component"),
-            qr: self.qr.expect("Cannot build Decoder without QR extract/decode component"),
-        }
+    /// Returns `BuilderError` if any of the required components are missing:
+    /// - `BuilderError::MissingPrepare` - prepare component not set
+    /// - `BuilderError::MissingDetect` - detect component not set
+    /// - `BuilderError::MissingQR` - QR extract/decode components not set
+    pub fn build(self) -> Result<Decoder<IMG, PREPD, RESULT>, BuilderError> {
+        let prepare = self.prepare.ok_or(BuilderError::MissingPrepare)?;
+        let detect = self.detect.ok_or(BuilderError::MissingDetect)?;
+        let qr = self.qr.ok_or(BuilderError::MissingQR)?;
+
+        Ok(Decoder {
+            prepare,
+            detect,
+            qr,
+        })
     }
 }
 
@@ -189,4 +225,75 @@ pub fn default_builder_with_info() -> DecoderBuilder<DynamicImage, GrayImage, (S
 struct ExtractDecode<PREPD, LOC, DATA, RESULT, ERROR> {
     extract: Box<dyn Extract<PREPD, LOC, DATA, ERROR>>,
     decode: Box<dyn Decode<DATA, RESULT, ERROR>>,
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use image::{DynamicImage, GrayImage};
+
+    #[test]
+    fn test_builder_missing_prepare() {
+        let mut builder: DecoderBuilder<DynamicImage, GrayImage, String> = DecoderBuilder::new();
+        builder.detect(Box::new(LineScan::new()));
+        builder.qr(Box::new(QRExtractor::new()), Box::new(QRDecoder::new()));
+        
+        let result = builder.build();
+        assert!(result.is_err());
+        match result {
+            Err(BuilderError::MissingPrepare) => (),
+            _ => panic!("Expected MissingPrepare error"),
+        }
+    }
+
+    #[test]
+    fn test_builder_missing_detect() {
+        let mut builder: DecoderBuilder<DynamicImage, GrayImage, String> = DecoderBuilder::new();
+        builder.prepare(Box::new(BlockedMean::new(5, 7)));
+        builder.qr(Box::new(QRExtractor::new()), Box::new(QRDecoder::new()));
+        
+        let result = builder.build();
+        assert!(result.is_err());
+        match result {
+            Err(BuilderError::MissingDetect) => (),
+            _ => panic!("Expected MissingDetect error"),
+        }
+    }
+
+    #[test]
+    fn test_builder_missing_qr() {
+        let mut builder: DecoderBuilder<DynamicImage, GrayImage, String> = DecoderBuilder::new();
+        builder.prepare(Box::new(BlockedMean::new(5, 7)));
+        builder.detect(Box::new(LineScan::new()));
+        
+        let result = builder.build();
+        assert!(result.is_err());
+        match result {
+            Err(BuilderError::MissingQR) => (),
+            _ => panic!("Expected MissingQR error"),
+        }
+    }
+
+    #[test]
+    fn test_builder_success() {
+        let mut builder: DecoderBuilder<DynamicImage, GrayImage, String> = DecoderBuilder::new();
+        builder.prepare(Box::new(BlockedMean::new(5, 7)));
+        builder.detect(Box::new(LineScan::new()));
+        builder.qr(Box::new(QRExtractor::new()), Box::new(QRDecoder::new()));
+        
+        let result = builder.build();
+        assert!(result.is_ok());
+    }
+
+    #[test]
+    fn test_default_decoder_builds() {
+        // This should not panic
+        let _decoder = default_decoder();
+    }
+
+    #[test]
+    fn test_default_decoder_with_info_builds() {
+        // This should not panic
+        let _decoder = default_decoder_with_info();
+    }
 }
