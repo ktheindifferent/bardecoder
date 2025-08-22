@@ -135,18 +135,10 @@ impl<IMG, PREPD, RESULT> DecoderBuilder<IMG, PREPD, RESULT> {
     ///
     /// Will panic if any of the required components are missing
     pub fn build(self) -> Decoder<IMG, PREPD, RESULT> {
-        if self.prepare.is_none() {
-            panic!("Cannot build Decoder without Prepare component");
-        }
-
-        if self.detect.is_none() {
-            panic!("Cannot build Decoder without Detect component");
-        }
-
         Decoder {
-            prepare: self.prepare.unwrap(),
-            detect: self.detect.unwrap(),
-            qr: self.qr.unwrap(),
+            prepare: self.prepare.expect("Cannot build Decoder without Prepare component"),
+            detect: self.detect.expect("Cannot build Decoder without Detect component"),
+            qr: self.qr.expect("Cannot build Decoder without QR extract/decode component"),
         }
     }
 }
