@@ -96,3 +96,98 @@ impl Decode<QRData, (String, QRInfo), QRError> for QRDecoderWithInfo {
         ))
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::util::qr::ECLevel;
+
+    #[test]
+    fn test_qr_decoder_new() {
+        let decoder = QRDecoder::new();
+        // Just verify construction doesn't panic
+        let _decoder_ref = &decoder;
+    }
+
+    #[test]
+    fn test_qr_decoder_with_info_new() {
+        let decoder = QRDecoderWithInfo::new();
+        // Just verify construction doesn't panic
+        let _decoder_ref = &decoder;
+    }
+
+    #[test]
+    fn test_decode_invalid_data_error() {
+        let decoder = QRDecoder::new();
+        let error = QRError {
+            msg: "Test error".to_string(),
+        };
+        let result = decoder.decode(Err(error.clone()));
+        assert!(result.is_err());
+        assert_eq!(result.unwrap_err(), error);
+    }
+
+    #[test]
+    fn test_decode_with_info_invalid_data_error() {
+        let decoder = QRDecoderWithInfo::new();
+        let error = QRError {
+            msg: "Test error".to_string(),
+        };
+        let result = decoder.decode(Err(error.clone()));
+        assert!(result.is_err());
+        assert_eq!(result.unwrap_err(), error);
+    }
+
+    #[test]
+    fn test_qr_info_struct_fields() {
+        let info = QRInfo {
+            version: 7,
+            ec_level: ECLevel::HIGH,
+            total_data: 1024,
+            errors: 5,
+        };
+        
+        assert_eq!(info.version, 7);
+        assert_eq!(info.ec_level, ECLevel::HIGH);
+        assert_eq!(info.total_data, 1024);
+        assert_eq!(info.errors, 5);
+    }
+
+    #[test]
+    fn test_qr_info_equality() {
+        let info1 = QRInfo {
+            version: 3,
+            ec_level: ECLevel::MEDIUM,
+            total_data: 512,
+            errors: 2,
+        };
+        
+        let info2 = QRInfo {
+            version: 3,
+            ec_level: ECLevel::MEDIUM,
+            total_data: 512,
+            errors: 2,
+        };
+        
+        assert_eq!(info1, info2);
+    }
+
+    #[test]
+    fn test_qr_info_inequality() {
+        let info1 = QRInfo {
+            version: 3,
+            ec_level: ECLevel::MEDIUM,
+            total_data: 512,
+            errors: 2,
+        };
+        
+        let info2 = QRInfo {
+            version: 4,
+            ec_level: ECLevel::MEDIUM,
+            total_data: 512,
+            errors: 2,
+        };
+        
+        assert_ne!(info1, info2);
+    }
+}

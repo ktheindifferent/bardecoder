@@ -231,6 +231,8 @@ struct ExtractDecode<PREPD, LOC, DATA, RESULT, ERROR> {
 mod tests {
     use super::*;
     use image::{DynamicImage, GrayImage};
+    use crate::decode::QRDecoderWithInfo;
+    use crate::util::qr::QRInfo;
 
     #[test]
     fn test_builder_missing_prepare() {
@@ -295,5 +297,45 @@ mod tests {
     fn test_default_decoder_with_info_builds() {
         // This should not panic
         let _decoder = default_decoder_with_info();
+    }
+
+    #[test]
+    fn test_decoder_with_info_builder_construction() {
+        let builder = default_builder_with_info();
+        let decoder = builder.build();
+        assert!(decoder.is_ok(), "Should build decoder with info successfully");
+    }
+
+    #[test]
+    fn test_custom_decoder_with_info() {
+        let mut builder: DecoderBuilder<DynamicImage, GrayImage, (String, QRInfo)> = 
+            DecoderBuilder::new();
+        builder.prepare(Box::new(BlockedMean::new(7, 9)));
+        builder.detect(Box::new(LineScan::new()));
+        builder.qr(
+            Box::new(QRExtractor::new()),
+            Box::new(QRDecoderWithInfo::new()),
+        );
+        
+        let result = builder.build();
+        assert!(result.is_ok(), "Custom decoder with info should build successfully");
+    }
+
+    #[test]
+    fn test_decoder_empty_image_returns_empty_vec() {
+        let decoder = default_decoder();
+        // Create an empty gray image
+        let img = DynamicImage::ImageLuma8(GrayImage::new(100, 100));
+        let results = decoder.decode(&img);
+        assert!(results.is_empty(), "Empty image should return no results");
+    }
+
+    #[test]
+    fn test_decoder_with_info_empty_image_returns_empty_vec() {
+        let decoder = default_decoder_with_info();
+        // Create an empty gray image
+        let img = DynamicImage::ImageLuma8(GrayImage::new(100, 100));
+        let results = decoder.decode(&img);
+        assert!(results.is_empty(), "Empty image should return no results");
     }
 }
