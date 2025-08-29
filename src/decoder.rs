@@ -11,7 +11,7 @@ use crate::prepare::{BlockedMean, Prepare};
 
 use crate::util::qr::{QRData, QRError, QRInfo, QRLocation};
 
-/// Error type for DecoderBuilder
+/// Error type for `DecoderBuilder`
 #[derive(Debug, Fail)]
 pub enum BuilderError {
     /// The prepare component is required but was not provided
@@ -68,10 +68,10 @@ impl<IMG, PREPD, RESULT> Decoder<IMG, PREPD, RESULT> {
 ///
 /// It will use the following components:
 ///
-/// * prepare: BlockedMean
-/// * detect: LineScan
-/// * extract: QRExtractor
-/// * decode: QRDecoder
+/// * prepare: `BlockedMean`
+/// * detect: `LineScan`
+/// * extract: `QRExtractor`
+/// * decode: `QRDecoder`
 ///
 /// This is meant to provide a good balance between speed and accuracy
 ///
@@ -79,6 +79,7 @@ impl<IMG, PREPD, RESULT> Decoder<IMG, PREPD, RESULT> {
 ///
 /// This function will panic if the default builder fails to build,
 /// which should never happen as all components are provided.
+#[must_use]
 pub fn default_decoder() -> Decoder<DynamicImage, GrayImage, String> {
     default_builder()
         .build()
@@ -89,10 +90,10 @@ pub fn default_decoder() -> Decoder<DynamicImage, GrayImage, String> {
 ///
 /// It will use the following components:
 ///
-/// * prepare: BlockedMean
-/// * detect: LineScan
-/// * extract: QRExtractor
-/// * decode: QRDecoderWithInfo
+/// * prepare: `BlockedMean`
+/// * detect: `LineScan`
+/// * extract: `QRExtractor`
+/// * decode: `QRDecoderWithInfo`
 ///
 /// This is meant to provide a good balance between speed and accuracy
 ///
@@ -100,6 +101,7 @@ pub fn default_decoder() -> Decoder<DynamicImage, GrayImage, String> {
 ///
 /// This function will panic if the default builder fails to build,
 /// which should never happen as all components are provided.
+#[must_use]
 pub fn default_decoder_with_info() -> Decoder<DynamicImage, GrayImage, (String, QRInfo)> {
     default_builder_with_info()
         .build()
@@ -179,16 +181,17 @@ impl<IMG, PREPD, RESULT> DecoderBuilder<IMG, PREPD, RESULT> {
     }
 }
 
-/// Create a default DecoderBuilder
+/// Create a default `DecoderBuilder`
 ///
 /// It will use the following components:
 ///
-/// * prepare: BlockedMean
-/// * locate: LineScan
-/// * extract: QRExtractor
-/// * decode: QRDecoder
+/// * prepare: `BlockedMean`
+/// * locate: `LineScan`
+/// * extract: `QRExtractor`
+/// * decode: `QRDecoder`
 ///
 /// The builder can then be customised before creating the Decoder
+#[must_use]
 pub fn default_builder() -> DecoderBuilder<DynamicImage, GrayImage, String> {
     let mut db = DecoderBuilder::new();
 
@@ -199,16 +202,17 @@ pub fn default_builder() -> DecoderBuilder<DynamicImage, GrayImage, String> {
     db
 }
 
-/// Create a default DecoderBuilder that also returns information about the decoded QR Code
+/// Create a default `DecoderBuilder` that also returns information about the decoded QR Code
 ///
 /// It will use the following components:
 ///
-/// * prepare: BlockedMean
-/// * locate: LineScan
-/// * extract: QRExtractor
-/// * decode: QRDecoderWithInfo
+/// * prepare: `BlockedMean`
+/// * locate: `LineScan`
+/// * extract: `QRExtractor`
+/// * decode: `QRDecoderWithInfo`
 ///
 /// The builder can then be customised before creating the Decoder
+#[must_use]
 pub fn default_builder_with_info() -> DecoderBuilder<DynamicImage, GrayImage, (String, QRInfo)> {
     let mut db = DecoderBuilder::new();
 

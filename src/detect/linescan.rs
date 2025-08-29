@@ -92,7 +92,7 @@ impl Detect<GrayImage> for LineScan {
             // Step 2
             // Run the refinement functions on the candidate location
             for (refine_func, dx, dy, is_diagonal) in &refine_func {
-                let vert = refine_func(&self, prepared, &finder, module_size);
+                let vert = refine_func(self, prepared, &finder, module_size);
 
                 let Some(vert) = vert else {
                     last_pixel = p.channels()[0];
@@ -120,13 +120,13 @@ impl Detect<GrayImage> for LineScan {
             pattern.slide();
         }
 
-        debug!("Candidate QR Locators {:#?}", candidates);
+        debug!("Candidate QR Locators {candidates:#?}");
 
         // Output a debug image by drawing red squares around all candidate locations
         #[cfg(feature = "debug-images")]
         {
             #[cfg(feature = "debug-images")]
-            let mut img = DynamicImage::ImageLuma8(prepared.clone()).to_rgb();
+            let mut img = DynamicImage::ImageLuma8(prepared.clone()).to_rgb8();
 
             for c in candidates.iter() {
                 let loc = c.location;
@@ -149,11 +149,11 @@ impl Detect<GrayImage> for LineScan {
             let mut tmp = temp_dir();
             tmp.push("bardecoder-debug-images");
 
-            if let Ok(_) = create_dir_all(tmp.clone()) {
+            if create_dir_all(tmp.clone()).is_ok() {
                 tmp.push("candidates.png");
 
-                if let Ok(_) = DynamicImage::ImageRgb8(img).save(tmp.clone()) {
-                    debug!("Debug image with locator candidates saved to {:?}", tmp);
+                if DynamicImage::ImageRgb8(img).save(tmp.clone()).is_ok() {
+                    debug!("Debug image with locator candidates saved to {tmp:?}");
                 }
             }
         }
@@ -449,15 +449,9 @@ fn dist(one: &Point, other: &Point) -> f64 {
 #[inline]
 fn find_qr(one: &Point, two: &Point, three: &Point, module_size: f64) -> Option<QRLocation> {
     // Try all three combinations of points to see if any of them are a QR
-    if let Some(qr) = find_qr_internal(one, two, three, module_size) {
-        Some(qr)
-    } else if let Some(qr) = find_qr_internal(two, one, three, module_size) {
-        Some(qr)
-    } else if let Some(qr) = find_qr_internal(three, one, two, module_size) {
-        Some(qr)
-    } else {
-        None
-    }
+    find_qr_internal(one, two, three, module_size)
+        .or_else(|| find_qr_internal(two, one, three, module_size))
+        .or_else(|| find_qr_internal(three, one, two, module_size))
 }
 
 fn find_qr_internal(

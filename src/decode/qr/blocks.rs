@@ -30,7 +30,7 @@ pub fn blocks(data: &QRData, level: &ECLevel, mask: &Box<QRMask>) -> Result<Vec<
         x -= 2;
         if x == 6 {
             // skip timing pattern
-            x = 5
+            x = 5;
         }
     }
 
@@ -39,22 +39,22 @@ pub fn blocks(data: &QRData, level: &ECLevel, mask: &Box<QRMask>) -> Result<Vec<
 
     if blocks.len() != bi.len() {
         return Err(QRError {
-            msg: format!("Expected {} blocks but found {}", bi.len(), blocks.len()),
+            msg: format!("Expected {expected} blocks but found {found}", expected = bi.len(), found = blocks.len()),
         });
     }
 
     for (i, block) in blocks.iter().enumerate() {
-        debug!("BLOCK {}, CODEWORDS {}", i, block.len());
+        debug!("BLOCK {i}, CODEWORDS {len}", len = block.len());
     }
 
     for i in 0..blocks.len() {
         if bi[i].total_per as usize != blocks[i].len() {
             return Err(QRError {
                 msg: format!(
-                    "Expected {} codewords in block {} but found {}",
-                    bi[i].total_per,
-                    i,
-                    blocks[i].len()
+                    "Expected {expected} codewords in block {block} but found {found}",
+                    expected = bi[i].total_per,
+                    block = i,
+                    found = blocks[i].len()
                 ),
             });
         }
@@ -119,7 +119,7 @@ fn is_data(data: &QRData, loc: &AlignmentLocation, x: u32, y: u32) -> bool {
 }
 
 fn is_alignment_coord(loc: &AlignmentLocation, coord: u32) -> bool {
-    if coord >= 4 && coord - 4 % 6 <= 4 {
+    if coord >= 4 && coord - 4 <= 4 {
         return true;
     }
 
@@ -149,23 +149,18 @@ fn alignment_location(version: u32) -> Result<AlignmentLocation, QRError> {
         // multiple alignment patterns
         7 => Ok(AlignmentLocation::new(22, 16)),
         8 => Ok(AlignmentLocation::new(24, 18)),
-        9 => Ok(AlignmentLocation::new(26, 20)),
+        9 | 14 => Ok(AlignmentLocation::new(26, 20)),
         10 => Ok(AlignmentLocation::new(28, 22)),
-        11 => Ok(AlignmentLocation::new(30, 24)),
-        12 => Ok(AlignmentLocation::new(32, 26)),
-        13 => Ok(AlignmentLocation::new(34, 28)),
-        14 => Ok(AlignmentLocation::new(26, 20)),
+        11 | 17 => Ok(AlignmentLocation::new(30, 24)),
+        12 | 25 => Ok(AlignmentLocation::new(32, 26)),
+        13 | 20 => Ok(AlignmentLocation::new(34, 28)),
         15 => Ok(AlignmentLocation::new(26, 22)),
         16 => Ok(AlignmentLocation::new(26, 24)),
-        17 => Ok(AlignmentLocation::new(30, 24)),
         18 => Ok(AlignmentLocation::new(30, 26)),
-        19 => Ok(AlignmentLocation::new(30, 28)),
-        20 => Ok(AlignmentLocation::new(34, 28)),
-        25 => Ok(AlignmentLocation::new(32, 26)),
+        19 | 40 => Ok(AlignmentLocation::new(30, 28)),
         36 => Ok(AlignmentLocation::new(24, 26)),
-        40 => Ok(AlignmentLocation::new(30, 28)),
         _ => Err(QRError {
-            msg: format!("Unknown version {}", version),
+            msg: format!("Unknown version {version}"),
         }),
     }
 }
@@ -282,13 +277,13 @@ mod test {
         let side = 4 * 36 + 17;
 
         for x in 0..side {
-            if (x >= 4 && x <= 8)
-                || (x >= 22 && x <= 26)
-                || (x >= 48 && x <= 52)
-                || (x >= 74 && x <= 78)
-                || (x >= 100 && x <= 104)
-                || (x >= 126 && x <= 130)
-                || (x >= 152 && x <= 156)
+            if (4..=8).contains(&x)
+                || (22..=26).contains(&x)
+                || (48..=52).contains(&x)
+                || (74..=78).contains(&x)
+                || (100..=104).contains(&x)
+                || (126..=130).contains(&x)
+                || (152..=156).contains(&x)
             {
                 assert!(is_alignment_coord(&al, x));
             } else {

@@ -16,11 +16,11 @@ pub fn format(data: &QRData) -> Result<(ECLevel, Box<QRMask>), QRError> {
 
     let correction = error_correction(2 * format[0] + format[1])
         .ok_or_else(|| QRError {
-            msg: format!("Invalid error correction level: {:02b}", 2 * format[0] + format[1]),
+            msg: format!("Invalid error correction level: {level:02b}", level = 2 * format[0] + format[1]),
         })?;
     let mask = mask(4 * format[2] + 2 * format[3] + format[4])
         .ok_or_else(|| QRError {
-            msg: format!("Invalid mask pattern: {:03b}", 4 * format[2] + 2 * format[3] + format[4]),
+            msg: format!("Invalid mask pattern: {pattern:03b}", pattern = 4 * format[2] + 2 * format[3] + format[4]),
         })?;
 
     Ok((correction, mask))
@@ -141,7 +141,7 @@ fn error_correction(bytes: u8) -> Option<ECLevel> {
 }
 
 fn mask(bytes: u8) -> Option<Box<QRMask>> {
-    debug!("MASK {:03b}", bytes);
+    debug!("MASK {bytes:03b}");
     match bytes {
         0b000 => qrmask(Box::new(|j, i| (i + j) % 2 == 0)),
         0b001 => qrmask(Box::new(|_, i| i % 2 == 0)),
