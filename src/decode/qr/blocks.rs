@@ -278,7 +278,7 @@ mod test {
 
     #[test]
     pub fn test_alignment_locs() {
-        let al = alignment_location(36).unwrap();
+        let al = alignment_location(36).expect("Alignment location should exist for version 36");
         let side = 4 * 36 + 17;
 
         for x in 0..side {
