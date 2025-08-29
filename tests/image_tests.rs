@@ -1,6 +1,5 @@
-use failure::Error;
 
-use bardecoder::{ECLevel, QRInfo};
+use bardecoder::{ECLevel, QRError, QRInfo};
 
 #[test]
 pub fn test_version1_example() {
@@ -190,7 +189,7 @@ pub fn test_wikipedia_examples() {
     );
 }
 
-pub fn test_image(file: &str, expected: Vec<Result<String, Error>>) {
+pub fn test_image(file: &str, expected: Vec<Result<String, QRError>>) {
     let img = image::open(file).unwrap();
 
     let decoder = bardecoder::default_decoder();
@@ -205,7 +204,7 @@ pub fn test_image(file: &str, expected: Vec<Result<String, Error>>) {
     }
 }
 
-pub fn test_image_with_info(file: &str, expected: Vec<Result<(String, QRInfo), Error>>) {
+pub fn test_image_with_info(file: &str, expected: Vec<Result<(String, QRInfo), QRError>>) {
     let img = image::open(file).unwrap();
 
     let decoder = bardecoder::default_decoder_with_info();

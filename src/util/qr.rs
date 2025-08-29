@@ -6,9 +6,9 @@ use std::string::FromUtf8Error;
 
 use crate::util::Point;
 
-/// Generic QR Error message. Can be converted into `failure::Error`
-#[derive(Fail, Debug, Clone, PartialEq)]
-#[fail(display = "Error decoding QR Code: {}", msg)]
+/// Generic QR Error message
+#[derive(thiserror::Error, Debug, Clone, PartialEq)]
+#[error("Error decoding QR Code: {msg}")]
 pub struct QRError {
     /// Detail message
     pub msg: String,
