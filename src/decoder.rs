@@ -83,7 +83,26 @@ impl<IMG, PREPD, RESULT> Decoder<IMG, PREPD, RESULT> {
 pub fn default_decoder() -> Decoder<DynamicImage, GrayImage, String> {
     default_builder()
         .build()
-        .expect("Default decoder should always build successfully")
+        .expect("Default decoder should always build successfully: all required components are provided")
+}
+
+/// Create a default Decoder (non-panicking version)
+///
+/// It will use the following components:
+///
+/// * prepare: BlockedMean
+/// * detect: LineScan
+/// * extract: QRExtractor
+/// * decode: QRDecoder
+///
+/// This is meant to provide a good balance between speed and accuracy
+///
+/// # Errors
+///
+/// Returns `BuilderError` if the decoder fails to build,
+/// though this should never happen as all components are provided.
+pub fn try_default_decoder() -> Result<Decoder<DynamicImage, GrayImage, String>, BuilderError> {
+    default_builder().build()
 }
 
 /// Create a default Decoder that also returns information about the decoded QR Code
@@ -105,7 +124,26 @@ pub fn default_decoder() -> Decoder<DynamicImage, GrayImage, String> {
 pub fn default_decoder_with_info() -> Decoder<DynamicImage, GrayImage, (String, QRInfo)> {
     default_builder_with_info()
         .build()
-        .expect("Default decoder with info should always build successfully")
+        .expect("Default decoder with info should always build successfully: all required components are provided")
+}
+
+/// Create a default Decoder that also returns information about the decoded QR Code (non-panicking version)
+///
+/// It will use the following components:
+///
+/// * prepare: BlockedMean
+/// * detect: LineScan
+/// * extract: QRExtractor
+/// * decode: QRDecoderWithInfo
+///
+/// This is meant to provide a good balance between speed and accuracy
+///
+/// # Errors
+///
+/// Returns `BuilderError` if the decoder fails to build,
+/// though this should never happen as all components are provided.
+pub fn try_default_decoder_with_info() -> Result<Decoder<DynamicImage, GrayImage, (String, QRInfo)>, BuilderError> {
+    default_builder_with_info().build()
 }
 
 /// Builder struct to create a Decoder
@@ -299,5 +337,23 @@ mod tests {
     fn test_default_decoder_with_info_builds() {
         // This should not panic
         let _decoder = default_decoder_with_info();
+    }
+
+    #[test]
+    fn test_try_default_decoder() {
+        let result = try_default_decoder();
+        assert!(result.is_ok(), "try_default_decoder should succeed with all components");
+        
+        // Verify it returns the same type as default_decoder
+        let _decoder: Decoder<DynamicImage, GrayImage, String> = result.expect("Should build decoder");
+    }
+
+    #[test]
+    fn test_try_default_decoder_with_info() {
+        let result = try_default_decoder_with_info();
+        assert!(result.is_ok(), "try_default_decoder_with_info should succeed with all components");
+        
+        // Verify it returns the same type as default_decoder_with_info
+        let _decoder: Decoder<DynamicImage, GrayImage, (String, QRInfo)> = result.expect("Should build decoder");
     }
 }

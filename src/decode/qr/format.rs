@@ -176,7 +176,7 @@ mod test {
 
         let output = correct(input);
         assert!(output.is_ok());
-        assert_eq!(input_to_check, output.unwrap());
+        assert_eq!(input_to_check, output.expect("Format correction should succeed for correct input"));
     }
 
     #[test]
@@ -188,7 +188,7 @@ mod test {
 
         let output = correct(input_fixable);
         assert!(output.is_ok());
-        assert_eq!(input_orig, output.unwrap());
+        assert_eq!(input_orig, output.expect("Format correction should succeed for fixable errors"));
     }
 
     #[test]

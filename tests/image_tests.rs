@@ -191,7 +191,7 @@ pub fn test_wikipedia_examples() {
 }
 
 pub fn test_image(file: &str, expected: Vec<Result<String, Error>>) {
-    let img = image::open(file).unwrap();
+    let img = image::open(file).expect(&format!("Failed to open test image: {}", file));
 
     let decoder = bardecoder::default_decoder();
     let result = decoder.decode(&img);
@@ -201,12 +201,12 @@ pub fn test_image(file: &str, expected: Vec<Result<String, Error>>) {
     for (expected, result) in expected.into_iter().zip(result) {
         assert!(expected.is_ok());
         assert!(result.is_ok());
-        assert_eq!(expected.unwrap(), result.unwrap());
+        assert_eq!(expected.expect("Expected result should be Ok"), result.expect("Decoded result should be Ok"));
     }
 }
 
 pub fn test_image_with_info(file: &str, expected: Vec<Result<(String, QRInfo), Error>>) {
-    let img = image::open(file).unwrap();
+    let img = image::open(file).expect(&format!("Failed to open test image: {}", file));
 
     let decoder = bardecoder::default_decoder_with_info();
     let result = decoder.decode(&img);
@@ -216,6 +216,6 @@ pub fn test_image_with_info(file: &str, expected: Vec<Result<(String, QRInfo), E
     for (expected, result) in expected.into_iter().zip(result) {
         assert!(expected.is_ok());
         assert!(result.is_ok());
-        assert_eq!(expected.unwrap(), result.unwrap());
+        assert_eq!(expected.expect("Expected result should be Ok"), result.expect("Decoded result should be Ok"));
     }
 }

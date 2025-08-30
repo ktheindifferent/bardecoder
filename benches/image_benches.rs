@@ -12,19 +12,22 @@ mod bench {
 
     #[bench]
     pub fn version1_example(b: &mut Bencher) {
-        let img = image::open("tests/images/version1_example.jpg").unwrap();
+        let img = image::open("tests/images/version1_example.jpg")
+            .expect("Failed to open benchmark image: version1_example.jpg");
         bench_image(&img, b);
     }
 
     #[bench]
     pub fn version3_example2(b: &mut Bencher) {
-        let img = image::open("tests/images/version3_example2.jpg").unwrap();
+        let img = image::open("tests/images/version3_example2.jpg")
+            .expect("Failed to open benchmark image: version3_example2.jpg");
         bench_image(&img, b);
     }
 
     #[bench]
     pub fn needs_alignment(b: &mut Bencher) {
-        let img = image::open("tests/images/needs_alignment.jpg").unwrap();
+        let img = image::open("tests/images/needs_alignment.jpg")
+            .expect("Failed to open benchmark image: needs_alignment.jpg");
         bench_image(&img, b);
     }
 
