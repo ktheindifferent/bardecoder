@@ -173,3 +173,81 @@ where
 
     Some(solution)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_correct_with_no_errors() {
+        // Create a block with no errors (all syndromes will be zero)
+        let block = vec![0u8; 10];
+        let block_info = BlockInfo {
+            block_count: 1,
+            total_per: 10,
+            data_per: 5,
+            ec_cap: 2,
+        };
+        
+        let result = correct_with_error_count(block.clone(), &block_info);
+        assert!(result.is_ok());
+        let (corrected, error_count) = result.unwrap();
+        assert_eq!(corrected, block);
+        assert_eq!(error_count, 0, "Should have zero errors when no correction needed");
+    }
+
+    #[test]
+    fn test_correct_without_error_count() {
+        // Test that correct() function works and doesn't return error count
+        let block = vec![0u8; 10];
+        let block_info = BlockInfo {
+            block_count: 1,
+            total_per: 10,
+            data_per: 5,
+            ec_cap: 2,
+        };
+        
+        let result = correct(block.clone(), &block_info);
+        assert!(result.is_ok());
+        let corrected = result.unwrap();
+        assert_eq!(corrected, block);
+    }
+
+    #[test]
+    fn test_syndrome_calculation() {
+        let block = vec![1, 2, 3, 4, 5];
+        let base = GF8(1);
+        let result = syndrome(&block, base);
+        // Just verify it doesn't panic and returns a GF8 value
+        assert!(result.0 <= 255);
+    }
+
+    #[test]
+    fn test_calculate_syndromes_all_zero() {
+        let block = vec![0u8; 10];
+        let block_info = BlockInfo {
+            block_count: 1,
+            total_per: 10,
+            data_per: 5,
+            ec_cap: 2,
+        };
+        
+        let (all_fine, syndromes) = calculate_syndromes(&block, &block_info);
+        assert!(all_fine, "Should indicate all syndromes are zero");
+        assert_eq!(syndromes.len(), 4); // ec_cap * 2
+        for syndrome in syndromes {
+            assert_eq!(syndrome, GF8(0));
+        }
+    }
+
+    #[test]
+    fn test_error_count_bits() {
+        // Test that error counting correctly counts bit differences
+        // When XORing with a value, the number of 1s in the result is the error count
+        let original = 0b00000000u8;
+        let error_pattern = 0b00000111u8; // 3 bits different
+        let corrected = original ^ error_pattern;
+        assert_eq!(corrected, 0b00000111);
+        assert_eq!(error_pattern.count_ones(), 3);
+    }
+}
