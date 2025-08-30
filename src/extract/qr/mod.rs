@@ -45,7 +45,7 @@ impl Extract<GrayImage, QRLocation, QRData, QRError> for QRExtractor {
         let mut data = vec![];
 
         #[cfg(feature = "debug-images")]
-        let mut img = DynamicImage::ImageLuma8(prepared.clone()).to_rgb();
+        let mut img = DynamicImage::ImageLuma8(prepared.clone()).to_rgb8();
 
         let mut dy = p.dy - 3.0 * p.ddy;
         let mut dx = p.dx - 3.0 * p.ddx;
@@ -83,14 +83,14 @@ impl Extract<GrayImage, QRLocation, QRData, QRError> for QRExtractor {
             tmp.push("bardecoder-debug-images");
             tmp.push("extract");
 
-            if let Ok(_) = create_dir_all(tmp.clone()) {
+            if create_dir_all(tmp.clone()).is_ok() {
                 tmp.push(format!(
-                    "extract_start_{}_{}_dx_{}_{}_dy_{}_{}.png",
-                    start.x, start.y, dx.dx, dx.dy, dy.dx, dy.dy
+                    "extract_start_{start_x}_{start_y}_dx_{dx_x}_{dx_y}_dy_{dy_x}_{dy_y}.png",
+                    start_x = start.x, start_y = start.y, dx_x = dx.dx, dx_y = dx.dy, dy_x = dy.dx, dy_y = dy.dy
                 ));
 
-                if let Ok(_) = DynamicImage::ImageRgb8(img).save(tmp.clone()) {
-                    debug!("Debug image with data pixels saved to {:?}", tmp);
+                if DynamicImage::ImageRgb8(img).save(tmp.clone()).is_ok() {
+                    debug!("Debug image with data pixels saved to {tmp:?}");
                 }
             }
         }
@@ -198,7 +198,7 @@ fn determine_perspective(
         }
     }
 
-    debug!("LEFT X {} RIGHT X {}", left_x, right_x);
+    debug!("LEFT X {left_x} RIGHT X {right_x}");
     est_alignment.x = (f64::from(left_x) + f64::from(right_x)) / 2.0;
 
     let al_x = est_alignment.x.round() as u32;
@@ -220,12 +220,12 @@ fn determine_perspective(
         }
     }
 
-    debug!("TOP Y {} BOTTOM Y {}", top_y, bottom_y);
+    debug!("TOP Y {top_y} BOTTOM Y {bottom_y}");
     est_alignment.y = (f64::from(top_y) + f64::from(bottom_y)) / 2.0;
 
     #[cfg(feature = "debug-images")]
     {
-        let mut img = DynamicImage::ImageLuma8(prepared.clone()).to_rgb();
+        let mut img = DynamicImage::ImageLuma8(prepared.clone()).to_rgb8();
 
         let x_start = max(0, (est_alignment.x - 2.5 * loc.module_size) as u32);
         let x_end = min(
@@ -251,11 +251,11 @@ fn determine_perspective(
         let mut tmp = temp_dir();
         tmp.push("bardecoder-debug-images");
 
-        if let Ok(_) = create_dir_all(tmp.clone()) {
+        if create_dir_all(tmp.clone()).is_ok() {
             tmp.push("alignment.png");
 
-            if let Ok(_) = DynamicImage::ImageRgb8(img).save(tmp.clone()) {
-                debug!("Debug image with data pixels saved to {:?}", tmp);
+            if DynamicImage::ImageRgb8(img).save(tmp.clone()).is_ok() {
+                debug!("Debug image with data pixels saved to {tmp:?}");
             }
         }
     }
@@ -265,11 +265,11 @@ fn determine_perspective(
         y: (loc.bottom_left + f64::from(size - 10) * dx - 3.0 * dy).y,
     };
 
-    debug!("ORIG EST {:?}, NEW EST {:?}", orig_estimate, est_alignment);
+    debug!("ORIG EST {orig_estimate:?}, NEW EST {est_alignment:?}");
 
     let mut delta = est_alignment - orig_estimate;
 
-    debug!("DELTA {:?}", delta);
+    debug!("DELTA {delta:?}");
 
     delta = delta / f64::from((size - 10) * (size - 10));
 
@@ -286,7 +286,7 @@ fn is_alignment(prepared: &GrayImage, p: Point, dx: Delta, dy: Delta, scale: f64
 
     #[cfg(feature = "debug-images")]
     {
-        let mut img = DynamicImage::ImageLuma8(prepared.clone()).to_rgb();
+        let mut img = DynamicImage::ImageLuma8(prepared.clone()).to_rgb8();
 
         for i in -2..3 {
             for j in -2..3 {
@@ -303,14 +303,14 @@ fn is_alignment(prepared: &GrayImage, p: Point, dx: Delta, dy: Delta, scale: f64
         tmp.push("bardecoder-debug-images");
         tmp.push("alignment");
 
-        if let Ok(_) = create_dir_all(tmp.clone()) {
+        if create_dir_all(tmp.clone()).is_ok() {
             tmp.push(format!(
-                "alignment_p_{}_{}_dx_{}_{}_dy_{}_{}.png",
-                p.x, p.y, dx.dx, dx.dy, dy.dx, dy.dy
+                "alignment_p_{p_x}_{p_y}_dx_{dx_x}_{dx_y}_dy_{dy_x}_{dy_y}.png",
+                p_x = p.x, p_y = p.y, dx_x = dx.dx, dx_y = dx.dy, dy_x = dy.dx, dy_y = dy.dy
             ));
 
-            if let Ok(_) = DynamicImage::ImageRgb8(img).save(tmp.clone()) {
-                debug!("Debug image with data pixels saved to {:?}", tmp);
+            if DynamicImage::ImageRgb8(img).save(tmp.clone()).is_ok() {
+                debug!("Debug image with data pixels saved to {tmp:?}");
             }
         }
     }

@@ -108,142 +108,6 @@ impl Div<GF4> for GF4 {
     }
 }
 
-#[cfg(test)]
-mod test {
-    use super::*;
-
-    #[test]
-    pub fn test_gf8_add() {
-        // zero
-        assert_eq!(GF8(0) + GF8(123), GF8(123));
-
-        // inverse sub
-        assert_eq!(GF8(40) + GF8(193), GF8(233));
-
-        // commutativity
-        assert_eq!(GF8(40) + GF8(193), GF8(193) + GF8(40));
-
-        // associativity
-        assert_eq!(
-            (GF8(40) + GF8(193)) + GF8(78),
-            GF8(40) + (GF8(193) + GF8(78))
-        );
-    }
-
-    #[test]
-    pub fn test_gf8_sub() {
-        // zero
-        assert_eq!(GF8(123) - GF8(123), GF8(0));
-
-        // inverse add
-        assert_eq!(GF8(233) - GF8(193), GF8(40));
-        assert_eq!(GF8(233) - GF8(40), GF8(193));
-    }
-
-    #[test]
-    pub fn test_gf8_mul() {
-        // zero
-        assert_eq!(GF8(40) * GF8(0), GF8(0));
-        assert_eq!(GF8(0) * GF8(40), GF8(0));
-
-        // unit
-        assert_eq!(GF8(40) * GF8(1), GF8(40));
-        assert_eq!(GF8(1) * GF8(40), GF8(40));
-
-        // inverse div
-        assert_eq!(GF8(40) * GF8(193), GF8(67));
-
-        // commutativity
-        assert_eq!(GF8(40) * GF8(193), GF8(193) * GF8(40));
-
-        // associativity
-        assert_eq!(
-            (GF8(40) * GF8(193)) * GF8(78),
-            GF8(40) * (GF8(193) * GF8(78))
-        );
-
-        // distributivity
-        assert_eq!(
-            GF8(40) * (GF8(193) + GF8(78)),
-            GF8(40) * GF8(193) + GF8(40) * GF8(78)
-        );
-    }
-
-    #[test]
-    pub fn test_gf8_div() {
-        // unit
-        assert_eq!(GF8(40) / GF8(40), GF8(1));
-        assert_eq!(GF8(40) / GF8(1), GF8(40));
-
-        // inverse mul
-        assert_eq!(GF8(67) / GF8(193), GF8(40));
-        assert_eq!(GF8(67) / GF8(40), GF8(193));
-    }
-
-    #[test]
-    pub fn test_gf4_add() {
-        // zero
-        assert_eq!(GF4(0) + GF4(5), GF4(5));
-
-        // inverse sub
-        assert_eq!(GF4(3) + GF4(7), GF4(4));
-
-        // commutativity
-        assert_eq!(GF4(5) + GF4(9), GF4(9) + GF4(5));
-
-        // associativity
-        assert_eq!((GF4(3) + GF4(9)) + GF4(10), GF4(3) + (GF4(9) + GF4(10)));
-    }
-
-    #[test]
-    pub fn test_gf4_sub() {
-        // zero
-        assert_eq!(GF4(5) - GF4(5), GF4(0));
-
-        // inverse add
-        assert_eq!(GF4(4) - GF4(3), GF4(7));
-        assert_eq!(GF4(4) - GF4(7), GF4(3));
-    }
-
-    #[test]
-    pub fn test_gf4_mul() {
-        // zero
-        assert_eq!(GF4(4) * GF4(0), GF4(0));
-        assert_eq!(GF4(0) * GF4(4), GF4(0));
-
-        // unit
-        assert_eq!(GF4(4) * GF4(1), GF4(4));
-        assert_eq!(GF4(1) * GF4(4), GF4(4));
-
-        // inverse div
-        assert_eq!(GF4(7) * GF4(3), GF4(9));
-
-        // commutativity
-        assert_eq!(GF4(2) * GF4(9), GF4(9) * GF4(2));
-
-        // associativity
-        assert_eq!((GF4(2) * GF4(9)) * GF4(13), GF4(2) * (GF4(9) * GF4(13)));
-
-        // distributivity
-        assert_eq!(
-            GF4(2) * (GF4(5) + GF4(11)),
-            GF4(2) * GF4(5) + GF4(2) * GF4(11)
-        );
-    }
-
-    #[test]
-    pub fn test_gf4_div() {
-        // unit
-        assert_eq!(GF4(4) / GF4(4), GF4(1));
-        assert_eq!(GF4(4) / GF4(1), GF4(4));
-
-        // inverse mul
-        assert_eq!(GF4(9) / GF4(7), GF4(3));
-        assert_eq!(GF4(9) / GF4(3), GF4(7));
-    }
-
-}
-
 // exp and log tables with base 2 in Galois Field 2^8 under modulo 0b100011101
 // to generate:
 /*
@@ -563,3 +427,139 @@ pub const EXP4: [GF4; 16] = [
 pub const LOG4: [u8; 16] = [
     0x00, 0x00, 0x01, 0x04, 0x02, 0x08, 0x05, 0x0A, 0x03, 0x0E, 0x09, 0x07, 0x06, 0x0D, 0x0B, 0x0C,
 ];
+
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    #[test]
+    pub fn test_gf8_add() {
+        // zero
+        assert_eq!(GF8(0) + GF8(123), GF8(123));
+
+        // inverse sub
+        assert_eq!(GF8(40) + GF8(193), GF8(233));
+
+        // commutativity
+        assert_eq!(GF8(40) + GF8(193), GF8(193) + GF8(40));
+
+        // associativity
+        assert_eq!(
+            (GF8(40) + GF8(193)) + GF8(78),
+            GF8(40) + (GF8(193) + GF8(78))
+        );
+    }
+
+    #[test]
+    pub fn test_gf8_sub() {
+        // zero
+        assert_eq!(GF8(123) - GF8(123), GF8(0));
+
+        // inverse add
+        assert_eq!(GF8(233) - GF8(193), GF8(40));
+        assert_eq!(GF8(233) - GF8(40), GF8(193));
+    }
+
+    #[test]
+    pub fn test_gf8_mul() {
+        // zero
+        assert_eq!(GF8(40) * GF8(0), GF8(0));
+        assert_eq!(GF8(0) * GF8(40), GF8(0));
+
+        // unit
+        assert_eq!(GF8(40) * GF8(1), GF8(40));
+        assert_eq!(GF8(1) * GF8(40), GF8(40));
+
+        // inverse div
+        assert_eq!(GF8(40) * GF8(193), GF8(67));
+
+        // commutativity
+        assert_eq!(GF8(40) * GF8(193), GF8(193) * GF8(40));
+
+        // associativity
+        assert_eq!(
+            (GF8(40) * GF8(193)) * GF8(78),
+            GF8(40) * (GF8(193) * GF8(78))
+        );
+
+        // distributivity
+        assert_eq!(
+            GF8(40) * (GF8(193) + GF8(78)),
+            GF8(40) * GF8(193) + GF8(40) * GF8(78)
+        );
+    }
+
+    #[test]
+    pub fn test_gf8_div() {
+        // unit
+        assert_eq!(GF8(40) / GF8(40), GF8(1));
+        assert_eq!(GF8(40) / GF8(1), GF8(40));
+
+        // inverse mul
+        assert_eq!(GF8(67) / GF8(193), GF8(40));
+        assert_eq!(GF8(67) / GF8(40), GF8(193));
+    }
+
+    #[test]
+    pub fn test_gf4_add() {
+        // zero
+        assert_eq!(GF4(0) + GF4(5), GF4(5));
+
+        // inverse sub
+        assert_eq!(GF4(3) + GF4(7), GF4(4));
+
+        // commutativity
+        assert_eq!(GF4(5) + GF4(9), GF4(9) + GF4(5));
+
+        // associativity
+        assert_eq!((GF4(3) + GF4(9)) + GF4(10), GF4(3) + (GF4(9) + GF4(10)));
+    }
+
+    #[test]
+    pub fn test_gf4_sub() {
+        // zero
+        assert_eq!(GF4(5) - GF4(5), GF4(0));
+
+        // inverse add
+        assert_eq!(GF4(4) - GF4(3), GF4(7));
+        assert_eq!(GF4(4) - GF4(7), GF4(3));
+    }
+
+    #[test]
+    pub fn test_gf4_mul() {
+        // zero
+        assert_eq!(GF4(4) * GF4(0), GF4(0));
+        assert_eq!(GF4(0) * GF4(4), GF4(0));
+
+        // unit
+        assert_eq!(GF4(4) * GF4(1), GF4(4));
+        assert_eq!(GF4(1) * GF4(4), GF4(4));
+
+        // inverse div
+        assert_eq!(GF4(7) * GF4(3), GF4(9));
+
+        // commutativity
+        assert_eq!(GF4(2) * GF4(9), GF4(9) * GF4(2));
+
+        // associativity
+        assert_eq!((GF4(2) * GF4(9)) * GF4(13), GF4(2) * (GF4(9) * GF4(13)));
+
+        // distributivity
+        assert_eq!(
+            GF4(2) * (GF4(5) + GF4(11)),
+            GF4(2) * GF4(5) + GF4(2) * GF4(11)
+        );
+    }
+
+    #[test]
+    pub fn test_gf4_div() {
+        // unit
+        assert_eq!(GF4(4) / GF4(4), GF4(1));
+        assert_eq!(GF4(4) / GF4(1), GF4(4));
+
+        // inverse mul
+        assert_eq!(GF4(9) / GF4(7), GF4(3));
+        assert_eq!(GF4(9) / GF4(3), GF4(7));
+    }
+
+}

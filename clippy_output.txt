@@ -1,0 +1,2672 @@
+    Updating crates.io index
+     Locking 59 packages to latest compatible versions
+      Adding image v0.23.14 (available: v0.25.6)
+ Downloading crates ...
+  Downloaded addr2line v0.24.2
+  Downloaded adler32 v1.2.0
+  Downloaded byteorder v1.5.0
+  Downloaded autocfg v1.5.0
+  Downloaded bitflags v1.3.2
+  Downloaded unicode-xid v0.2.6
+  Downloaded either v1.15.0
+  Downloaded quote v1.0.40
+  Downloaded semver v0.1.20
+  Downloaded weezl v0.1.10
+  Downloaded rayon-core v1.13.0
+  Downloaded miniz_oxide v0.8.9
+  Downloaded memchr v2.7.5
+  Downloaded rayon v1.11.0
+  Downloaded deflate v0.8.6
+  Downloaded miniz_oxide v0.4.4
+  Downloaded miniz_oxide v0.3.7
+  Downloaded log v0.4.27
+  Downloaded crossbeam-utils v0.8.21
+  Downloaded syn v1.0.109
+  Downloaded image v0.23.14
+  Downloaded gimli v0.31.1
+  Downloaded jpeg-decoder v0.1.22
+  Downloaded unicode-ident v1.0.18
+  Downloaded png v0.16.8
+  Downloaded object v0.36.7
+  Downloaded crossbeam-epoch v0.9.18
+  Downloaded backtrace v0.3.75
+  Downloaded rustc-demangle v0.1.26
+  Downloaded proc-macro2 v1.0.101
+  Downloaded num-traits v0.2.19
+  Downloaded num-rational v0.3.2
+  Downloaded num-integer v0.1.46
+  Downloaded failure v0.1.8
+  Downloaded crc32fast v1.5.0
+  Downloaded color_quant v1.1.0
+  Downloaded newtype_derive v0.1.6
+  Downloaded failure_derive v0.1.8
+  Downloaded crossbeam-deque v0.8.6
+  Downloaded cfg-if v1.0.3
+  Downloaded bytemuck v1.23.2
+  Downloaded synstructure v0.12.6
+  Downloaded scoped_threadpool v0.1.9
+  Downloaded gif v0.11.4
+  Downloaded rustc_version v0.1.7
+  Downloaded num-iter v0.1.45
+  Downloaded adler2 v2.0.1
+  Downloaded adler v1.0.2
+  Downloaded libc v0.2.175
+  Downloaded tiff v0.6.1
+   Compiling autocfg v1.5.0
+   Compiling crossbeam-utils v0.8.21
+   Compiling proc-macro2 v1.0.101
+   Compiling num-traits v0.2.19
+    Checking crossbeam-epoch v0.9.18
+   Compiling rayon-core v1.13.0
+   Compiling unicode-ident v1.0.18
+    Checking crossbeam-deque v0.8.6
+   Compiling syn v1.0.109
+    Checking cfg-if v1.0.3
+   Compiling quote v1.0.40
+   Compiling miniz_oxide v0.4.4
+   Compiling semver v0.1.20
+   Compiling crc32fast v1.5.0
+   Compiling libc v0.2.175
+    Checking adler32 v1.2.0
+    Checking either v1.15.0
+   Compiling object v0.36.7
+    Checking rayon v1.11.0
+   Compiling rustc_version v0.1.7
+    Checking num-integer v0.1.46
+   Compiling num-rational v0.3.2
+   Compiling unicode-xid v0.2.6
+    Checking weezl v0.1.10
+    Checking adler v1.0.2
+    Checking byteorder v1.5.0
+    Checking gimli v0.31.1
+    Checking adler2 v2.0.1
+    Checking memchr v2.7.5
+   Compiling failure_derive v0.1.8
+    Checking addr2line v0.24.2
+    Checking miniz_oxide v0.8.9
+    Checking deflate v0.8.6
+   Compiling synstructure v0.12.6
+    Checking jpeg-decoder v0.1.22
+   Compiling newtype_derive v0.1.6
+    Checking miniz_oxide v0.3.7
+    Checking color_quant v1.1.0
+    Checking bitflags v1.3.2
+    Checking rustc-demangle v0.1.26
+    Checking png v0.16.8
+    Checking backtrace v0.3.75
+    Checking gif v0.11.4
+    Checking tiff v0.6.1
+    Checking num-iter v0.1.45
+    Checking bytemuck v1.23.2
+    Checking scoped_threadpool v0.1.9
+    Checking image v0.23.14
+    Checking failure v0.1.8
+    Checking log v0.4.27
+    Checking bardecoder v0.3.1 (/root/repo)
+error: empty line after doc comment
+  --> src/decode/mod.rs:39:1
+   |
+39 | / /// [`Decoder`]: ../struct.Decoder.html
+40 | |
+   | |_^
+41 |   pub trait Decode<DATA, RESULT, ERROR>
+   |   ---------------- the comment documents this trait
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#empty_line_after_doc_comments
+note: the lint level is defined here
+  --> src/lib.rs:7:48
+   |
+7  | #![cfg_attr(feature = "fail-on-warnings", deny(warnings))]
+   |                                                ^^^^^^^^
+   = note: `#[deny(clippy::empty_line_after_doc_comments)]` implied by `#[deny(warnings)]`
+   = help: if the empty line is unintentional, remove it
+
+error: binding's name is too similar to existing binding
+   --> src/extract/qr/mod.rs:386:46
+    |
+386 |     fn new(dx: Delta, ddx: Delta, dy: Delta, ddy: Delta) -> Perspective {
+    |                                              ^^^
+    |
+note: existing binding defined here
+   --> src/extract/qr/mod.rs:386:23
+    |
+386 |     fn new(dx: Delta, ddx: Delta, dy: Delta, ddy: Delta) -> Perspective {
+    |                       ^^^
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#similar_names
+    = note: `#[deny(clippy::similar_names)]` implied by `#[deny(warnings)]`
+
+error: use of deprecated method `image::DynamicImage::to_rgb`: replaced by `to_rgb8`
+   --> src/detect/linescan.rs:129:70
+    |
+129 |             let mut img = DynamicImage::ImageLuma8(prepared.clone()).to_rgb();
+    |                                                                      ^^^^^^
+    |
+    = note: `#[deny(deprecated)]` implied by `#[deny(warnings)]`
+
+error: use of deprecated method `image::DynamicImage::to_rgb`: replaced by `to_rgb8`
+  --> src/extract/qr/mod.rs:48:66
+   |
+48 |         let mut img = DynamicImage::ImageLuma8(prepared.clone()).to_rgb();
+   |                                                                  ^^^^^^
+
+error: use of deprecated method `image::DynamicImage::to_rgb`: replaced by `to_rgb8`
+   --> src/extract/qr/mod.rs:228:66
+    |
+228 |         let mut img = DynamicImage::ImageLuma8(prepared.clone()).to_rgb();
+    |                                                                  ^^^^^^
+
+error: use of deprecated method `image::DynamicImage::to_rgb`: replaced by `to_rgb8`
+   --> src/extract/qr/mod.rs:289:66
+    |
+289 |         let mut img = DynamicImage::ImageLuma8(prepared.clone()).to_rgb();
+    |                                                                  ^^^^^^
+
+error: item in documentation is missing backticks
+  --> src/decoder.rs:14:20
+   |
+14 | /// Error type for DecoderBuilder
+   |                    ^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+   = note: `#[deny(clippy::doc_markdown)]` implied by `#[deny(warnings)]`
+help: try
+   |
+14 - /// Error type for DecoderBuilder
+14 + /// Error type for `DecoderBuilder`
+   |
+
+error: item in documentation is missing backticks
+  --> src/decoder.rs:71:16
+   |
+71 | /// * prepare: BlockedMean
+   |                ^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+   |
+71 - /// * prepare: BlockedMean
+71 + /// * prepare: `BlockedMean`
+   |
+
+error: item in documentation is missing backticks
+  --> src/decoder.rs:72:15
+   |
+72 | /// * detect: LineScan
+   |               ^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+   |
+72 - /// * detect: LineScan
+72 + /// * detect: `LineScan`
+   |
+
+error: item in documentation is missing backticks
+  --> src/decoder.rs:73:16
+   |
+73 | /// * extract: QRExtractor
+   |                ^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+   |
+73 - /// * extract: QRExtractor
+73 + /// * extract: `QRExtractor`
+   |
+
+error: item in documentation is missing backticks
+  --> src/decoder.rs:74:15
+   |
+74 | /// * decode: QRDecoder
+   |               ^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+   |
+74 - /// * decode: QRDecoder
+74 + /// * decode: `QRDecoder`
+   |
+
+error: this function could have a `#[must_use]` attribute
+  --> src/decoder.rs:82:1
+   |
+82 | pub fn default_decoder() -> Decoder<DynamicImage, GrayImage, String> {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: add the attribute: `#[must_use] pub fn default_decoder() -> Decoder<DynamicImage, GrayImage, String>`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#must_use_candidate
+   = note: `#[deny(clippy::must_use_candidate)]` implied by `#[deny(warnings)]`
+
+error: item in documentation is missing backticks
+  --> src/decoder.rs:92:16
+   |
+92 | /// * prepare: BlockedMean
+   |                ^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+   |
+92 - /// * prepare: BlockedMean
+92 + /// * prepare: `BlockedMean`
+   |
+
+error: item in documentation is missing backticks
+  --> src/decoder.rs:93:15
+   |
+93 | /// * detect: LineScan
+   |               ^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+   |
+93 - /// * detect: LineScan
+93 + /// * detect: `LineScan`
+   |
+
+error: item in documentation is missing backticks
+  --> src/decoder.rs:94:16
+   |
+94 | /// * extract: QRExtractor
+   |                ^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+   |
+94 - /// * extract: QRExtractor
+94 + /// * extract: `QRExtractor`
+   |
+
+error: item in documentation is missing backticks
+  --> src/decoder.rs:95:15
+   |
+95 | /// * decode: QRDecoderWithInfo
+   |               ^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+   |
+95 - /// * decode: QRDecoderWithInfo
+95 + /// * decode: `QRDecoderWithInfo`
+   |
+
+error: this function could have a `#[must_use]` attribute
+   --> src/decoder.rs:103:1
+    |
+103 | pub fn default_decoder_with_info() -> Decoder<DynamicImage, GrayImage, (String, QRInfo)> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: add the attribute: `#[must_use] pub fn default_decoder_with_info() -> Decoder<DynamicImage, GrayImage, (String, QRInfo)>`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#must_use_candidate
+
+error: this method could have a `#[must_use]` attribute
+   --> src/decoder.rs:125:5
+    |
+125 |     pub fn new() -> DecoderBuilder<IMG, PREPD, RESULT> {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: add the attribute: `#[must_use] pub fn new() -> DecoderBuilder<IMG, PREPD, RESULT>`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#must_use_candidate
+
+error: item in documentation is missing backticks
+   --> src/decoder.rs:182:22
+    |
+182 | /// Create a default DecoderBuilder
+    |                      ^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+    |
+182 - /// Create a default DecoderBuilder
+182 + /// Create a default `DecoderBuilder`
+    |
+
+error: item in documentation is missing backticks
+   --> src/decoder.rs:186:16
+    |
+186 | /// * prepare: BlockedMean
+    |                ^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+    |
+186 - /// * prepare: BlockedMean
+186 + /// * prepare: `BlockedMean`
+    |
+
+error: item in documentation is missing backticks
+   --> src/decoder.rs:187:15
+    |
+187 | /// * locate: LineScan
+    |               ^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+    |
+187 - /// * locate: LineScan
+187 + /// * locate: `LineScan`
+    |
+
+error: item in documentation is missing backticks
+   --> src/decoder.rs:188:16
+    |
+188 | /// * extract: QRExtractor
+    |                ^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+    |
+188 - /// * extract: QRExtractor
+188 + /// * extract: `QRExtractor`
+    |
+
+error: item in documentation is missing backticks
+   --> src/decoder.rs:189:15
+    |
+189 | /// * decode: QRDecoder
+    |               ^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+    |
+189 - /// * decode: QRDecoder
+189 + /// * decode: `QRDecoder`
+    |
+
+error: this function could have a `#[must_use]` attribute
+   --> src/decoder.rs:192:1
+    |
+192 | pub fn default_builder() -> DecoderBuilder<DynamicImage, GrayImage, String> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: add the attribute: `#[must_use] pub fn default_builder() -> DecoderBuilder<DynamicImage, GrayImage, String>`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#must_use_candidate
+
+error: item in documentation is missing backticks
+   --> src/decoder.rs:202:22
+    |
+202 | /// Create a default DecoderBuilder that also returns information about the decoded QR Code
+    |                      ^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+    |
+202 - /// Create a default DecoderBuilder that also returns information about the decoded QR Code
+202 + /// Create a default `DecoderBuilder` that also returns information about the decoded QR Code
+    |
+
+error: item in documentation is missing backticks
+   --> src/decoder.rs:206:16
+    |
+206 | /// * prepare: BlockedMean
+    |                ^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+    |
+206 - /// * prepare: BlockedMean
+206 + /// * prepare: `BlockedMean`
+    |
+
+error: item in documentation is missing backticks
+   --> src/decoder.rs:207:15
+    |
+207 | /// * locate: LineScan
+    |               ^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+    |
+207 - /// * locate: LineScan
+207 + /// * locate: `LineScan`
+    |
+
+error: item in documentation is missing backticks
+   --> src/decoder.rs:208:16
+    |
+208 | /// * extract: QRExtractor
+    |                ^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+    |
+208 - /// * extract: QRExtractor
+208 + /// * extract: `QRExtractor`
+    |
+
+error: item in documentation is missing backticks
+   --> src/decoder.rs:209:15
+    |
+209 | /// * decode: QRDecoderWithInfo
+    |               ^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+    |
+209 - /// * decode: QRDecoderWithInfo
+209 + /// * decode: `QRDecoderWithInfo`
+    |
+
+error: this function could have a `#[must_use]` attribute
+   --> src/decoder.rs:212:1
+    |
+212 | pub fn default_builder_with_info() -> DecoderBuilder<DynamicImage, GrayImage, (String, QRInfo)> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: add the attribute: `#[must_use] pub fn default_builder_with_info() -> DecoderBuilder<DynamicImage, GrayImage, (String, QRInfo)>`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#must_use_candidate
+
+error: consider adding a `;` to the last statement for consistent formatting
+  --> src/decode/qr/blocks.rs:33:13
+   |
+33 |             x = 5
+   |             ^^^^^ help: add a `;` here: `x = 5;`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#semicolon_if_nothing_returned
+   = note: `#[deny(clippy::semicolon_if_nothing_returned)]` implied by `#[deny(warnings)]`
+
+error: this operation has no effect
+   --> src/decode/qr/blocks.rs:122:30
+    |
+122 |     if coord >= 4 && coord - 4 % 6 <= 4 {
+    |                              ^^^^^ help: consider reducing it to: `4`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#identity_op
+    = note: `#[deny(clippy::identity_op)]` implied by `#[deny(warnings)]`
+
+error: these match arms have identical bodies
+   --> src/decode/qr/blocks.rs:152:9
+    |
+152 |         9 => Ok(AlignmentLocation::new(26, 20)),
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+157 |         14 => Ok(AlignmentLocation::new(26, 20)),
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is unintentional make the arms return different values
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#match_same_arms
+    = note: `#[deny(clippy::match_same_arms)]` implied by `#[deny(warnings)]`
+help: otherwise merge the patterns into a single arm
+    |
+152 ~         9 | 14 => Ok(AlignmentLocation::new(26, 20)),
+153 |         10 => Ok(AlignmentLocation::new(28, 22)),
+...
+156 |         13 => Ok(AlignmentLocation::new(34, 28)),
+157 ~         15 => Ok(AlignmentLocation::new(26, 22)),
+    |
+
+error: these match arms have identical bodies
+   --> src/decode/qr/blocks.rs:154:9
+    |
+154 |         11 => Ok(AlignmentLocation::new(30, 24)),
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+160 |         17 => Ok(AlignmentLocation::new(30, 24)),
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is unintentional make the arms return different values
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#match_same_arms
+help: otherwise merge the patterns into a single arm
+    |
+154 ~         11 | 17 => Ok(AlignmentLocation::new(30, 24)),
+155 |         12 => Ok(AlignmentLocation::new(32, 26)),
+...
+159 |         16 => Ok(AlignmentLocation::new(26, 24)),
+160 ~         18 => Ok(AlignmentLocation::new(30, 26)),
+    |
+
+error: these match arms have identical bodies
+   --> src/decode/qr/blocks.rs:155:9
+    |
+155 |         12 => Ok(AlignmentLocation::new(32, 26)),
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+164 |         25 => Ok(AlignmentLocation::new(32, 26)),
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is unintentional make the arms return different values
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#match_same_arms
+help: otherwise merge the patterns into a single arm
+    |
+155 ~         12 | 25 => Ok(AlignmentLocation::new(32, 26)),
+156 |         13 => Ok(AlignmentLocation::new(34, 28)),
+...
+163 |         20 => Ok(AlignmentLocation::new(34, 28)),
+164 ~         36 => Ok(AlignmentLocation::new(24, 26)),
+    |
+
+error: these match arms have identical bodies
+   --> src/decode/qr/blocks.rs:156:9
+    |
+156 |         13 => Ok(AlignmentLocation::new(34, 28)),
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+163 |         20 => Ok(AlignmentLocation::new(34, 28)),
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is unintentional make the arms return different values
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#match_same_arms
+help: otherwise merge the patterns into a single arm
+    |
+156 ~         13 | 20 => Ok(AlignmentLocation::new(34, 28)),
+157 |         14 => Ok(AlignmentLocation::new(26, 20)),
+...
+162 |         19 => Ok(AlignmentLocation::new(30, 28)),
+163 ~         25 => Ok(AlignmentLocation::new(32, 26)),
+    |
+
+error: these match arms have identical bodies
+   --> src/decode/qr/blocks.rs:162:9
+    |
+162 |         19 => Ok(AlignmentLocation::new(30, 28)),
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+166 |         40 => Ok(AlignmentLocation::new(30, 28)),
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is unintentional make the arms return different values
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#match_same_arms
+help: otherwise merge the patterns into a single arm
+    |
+162 ~         19 | 40 => Ok(AlignmentLocation::new(30, 28)),
+163 |         20 => Ok(AlignmentLocation::new(34, 28)),
+164 |         25 => Ok(AlignmentLocation::new(32, 26)),
+165 |         36 => Ok(AlignmentLocation::new(24, 26)),
+166 ~         _ => Err(QRError {
+    |
+
+error: variables can be used directly in the `format!` string
+   --> src/decode/qr/blocks.rs:168:18
+    |
+168 |             msg: format!("Unknown version {}", version),
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+    = note: `#[deny(clippy::uninlined_format_args)]` implied by `#[deny(warnings)]`
+help: change this to
+    |
+168 -             msg: format!("Unknown version {}", version),
+168 +             msg: format!("Unknown version {version}"),
+    |
+
+error: field name starts with the struct's name
+   --> src/decode/qr/blocks.rs:187:5
+    |
+187 |     blocks: Vec<Vec<u8>>,
+    |     ^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#struct_field_names
+    = note: `#[deny(clippy::struct_field_names)]` implied by `#[deny(warnings)]`
+
+error: field name ends with the struct's name
+   --> src/decode/qr/blocks.rs:192:5
+    |
+192 |     data_blocks: bool,
+    |     ^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#struct_field_names
+
+error: this expression creates a reference which is immediately dereferenced by the compiler
+  --> src/decode/qr/correct.rs:59:42
+   |
+59 |         syndromes[i as usize] = syndrome(&block, EXP8[i as usize]);
+   |                                          ^^^^^^ help: change this to: `block`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#needless_borrow
+   = note: `#[deny(clippy::needless_borrow)]` implied by `#[deny(warnings)]`
+
+error: variables can be used directly in the `format!` string
+   --> src/decode/qr/correct.rs:106:13
+    |
+106 |             debug!("LOC {:?} {} ", exp, i);
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+106 -             debug!("LOC {:?} {} ", exp, i);
+106 +             debug!("LOC {exp:?} {i} ");
+    |
+
+error: variables can be used directly in the `format!` string
+   --> src/decode/qr/correct.rs:111:5
+    |
+111 |     debug!("LOCS {:?}", locs);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+111 -     debug!("LOCS {:?}", locs);
+111 +     debug!("LOCS {locs:?}");
+    |
+
+error: casting to the same type is unnecessary (`usize` -> `usize`)
+   --> src/decode/qr/correct.rs:120:34
+    |
+120 |             eq[i][j] = EXP8[(i * locs[j] as usize) % 255];
+    |                                  ^^^^^^^^^^^^^^^^ help: try: `locs[j]`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#unnecessary_cast
+    = note: `#[deny(clippy::unnecessary_cast)]` implied by `#[deny(warnings)]`
+
+error: casting to the same type is unnecessary (`usize` -> `usize`)
+   --> src/decode/qr/correct.rs:133:18
+    |
+133 |     let num_eq = eq.len() as usize;
+    |                  ^^^^^^^^^^^^^^^^^ help: try: `eq.len()`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#unnecessary_cast
+
+error: variables can be used directly in the `format!` string
+  --> src/decode/qr/data.rs:16:26
+   |
+16 |                     msg: format!("Mode {:04b} not yet implemented.", mode),
+   |                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+   |
+16 -                     msg: format!("Mode {:04b} not yet implemented.", mode),
+16 +                     msg: format!("Mode {mode:04b} not yet implemented."),
+   |
+
+error: variables can be used directly in the `format!` string
+  --> src/decode/qr/data.rs:32:22
+   |
+32 |                 msg: format!("Unknown version {}", version),
+   |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+   |
+32 -                 msg: format!("Unknown version {}", version),
+32 +                 msg: format!("Unknown version {version}"),
+   |
+
+error: variables can be used directly in the `format!` string
+  --> src/decode/qr/data.rs:40:18
+   |
+40 |             msg: format!("Could not read {} bits for numeric length", length_bits),
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+   |
+40 -             msg: format!("Could not read {} bits for numeric length", length_bits),
+40 +             msg: format!("Could not read {length_bits} bits for numeric length"),
+   |
+
+error: `format!(..)` appended to existing `String`
+  --> src/decode/qr/data.rs:49:13
+   |
+49 |             result.push_str(&format!("{:03}", digits));
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: consider using `write!` to avoid the extra allocation
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#format_push_string
+   = note: `#[deny(clippy::format_push_string)]` implied by `#[deny(warnings)]`
+
+error: variables can be used directly in the `format!` string
+  --> src/decode/qr/data.rs:49:30
+   |
+49 |             result.push_str(&format!("{:03}", digits));
+   |                              ^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+   |
+49 -             result.push_str(&format!("{:03}", digits));
+49 +             result.push_str(&format!("{digits:03}"));
+   |
+
+error: `format!(..)` appended to existing `String`
+  --> src/decode/qr/data.rs:57:13
+   |
+57 |             result.push_str(&format!("{:02}", digits));
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: consider using `write!` to avoid the extra allocation
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#format_push_string
+
+error: variables can be used directly in the `format!` string
+  --> src/decode/qr/data.rs:57:30
+   |
+57 |             result.push_str(&format!("{:02}", digits));
+   |                              ^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+   |
+57 -             result.push_str(&format!("{:02}", digits));
+57 +             result.push_str(&format!("{digits:02}"));
+   |
+
+error: `format!(..)` appended to existing `String`
+  --> src/decode/qr/data.rs:64:13
+   |
+64 |             result.push_str(&format!("{:01}", digits));
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: consider using `write!` to avoid the extra allocation
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#format_push_string
+
+error: variables can be used directly in the `format!` string
+  --> src/decode/qr/data.rs:64:30
+   |
+64 |             result.push_str(&format!("{:01}", digits));
+   |                              ^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+   |
+64 -             result.push_str(&format!("{:01}", digits));
+64 +             result.push_str(&format!("{digits:01}"));
+   |
+
+error: variables can be used directly in the `format!` string
+  --> src/decode/qr/data.rs:70:5
+   |
+70 |     debug!("NUMERIC {:?}", result);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+   |
+70 -     debug!("NUMERIC {:?}", result);
+70 +     debug!("NUMERIC {result:?}");
+   |
+
+error: variables can be used directly in the `format!` string
+  --> src/decode/qr/data.rs:88:22
+   |
+88 |                 msg: format!("Unknown version {}", version),
+   |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+   |
+88 -                 msg: format!("Unknown version {}", version),
+88 +                 msg: format!("Unknown version {version}"),
+   |
+
+error: variables can be used directly in the `format!` string
+  --> src/decode/qr/data.rs:96:18
+   |
+96 |               msg: format!(
+   |  __________________^
+97 | |                 "Could not read {} bits for alphanumeric length",
+98 | |                 length_bits
+99 | |             ),
+   | |_____________^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+
+error: variables can be used directly in the `format!` string
+   --> src/decode/qr/data.rs:123:5
+    |
+123 |     debug!("ALPHANUMERIC {:?}", result);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+123 -     debug!("ALPHANUMERIC {:?}", result);
+123 +     debug!("ALPHANUMERIC {result:?}");
+    |
+
+error: these match arms have identical bodies
+   --> src/decode/qr/data.rs:131:9
+    |
+131 |         10..=26 => 16,
+    |         ^^^^^^^^^^^^^
+132 |         27..=40 => 16,
+    |         ^^^^^^^^^^^^^
+    |
+    = help: if this is unintentional make the arms return different values
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#match_same_arms
+help: otherwise merge the patterns into a single arm
+    |
+131 ~         10..=26 | 27..=40 => 16,
+132 ~         _ => {
+    |
+
+error: variables can be used directly in the `format!` string
+   --> src/decode/qr/data.rs:135:22
+    |
+135 |                 msg: format!("Unknown version {}", version),
+    |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+135 -                 msg: format!("Unknown version {}", version),
+135 +                 msg: format!("Unknown version {version}"),
+    |
+
+error: variables can be used directly in the `format!` string
+   --> src/decode/qr/data.rs:143:18
+    |
+143 |               msg: format!(
+    |  __________________^
+144 | |                 "Could not read {} bits for alphanumeric length",
+145 | |                 length_bits
+146 | |             ),
+    | |_____________^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+
+error: variables can be used directly in the `format!` string
+   --> src/decode/qr/data.rs:156:5
+    |
+156 |     debug!("EIGHT BIT RAW {:?}", result);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+156 -     debug!("EIGHT BIT RAW {:?}", result);
+156 +     debug!("EIGHT BIT RAW {result:?}");
+    |
+
+error: variables can be used directly in the `format!` string
+   --> src/decode/qr/data.rs:169:9
+    |
+169 |         debug!("EIGHT BIT AS UTF-8 {:?}", utf8);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+169 -         debug!("EIGHT BIT AS UTF-8 {:?}", utf8);
+169 +         debug!("EIGHT BIT AS UTF-8 {utf8:?}");
+    |
+
+error: variables can be used directly in the `format!` string
+   --> src/decode/qr/data.rs:176:9
+    |
+176 |         debug!("EIGHT BIT AS ISO 8859-1 {:?}", iso88591);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+176 -         debug!("EIGHT BIT AS ISO 8859-1 {:?}", iso88591);
+176 +         debug!("EIGHT BIT AS ISO 8859-1 {iso88591:?}");
+    |
+
+error: variables can be used directly in the `format!` string
+   --> src/decode/qr/data.rs:187:18
+    |
+187 |             msg: format!("Could not read {} bits", bits),
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+187 -             msg: format!("Could not read {} bits", bits),
+187 +             msg: format!("Could not read {bits} bits"),
+    |
+
+error: variables can be used directly in the `format!` string
+   --> src/decode/qr/data.rs:196:18
+    |
+196 |             msg: format!("Could not read {} bits", bits),
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+196 -             msg: format!("Could not read {} bits", bits),
+196 +             msg: format!("Could not read {bits} bits"),
+    |
+
+error: item in documentation is missing backticks
+  --> src/decode/qr/decoder.rs:20:25
+   |
+20 |     /// Construct a new QRDecoder
+   |                         ^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+   |
+20 -     /// Construct a new QRDecoder
+20 +     /// Construct a new `QRDecoder`
+   |
+
+error: this method could have a `#[must_use]` attribute
+  --> src/decode/qr/decoder.rs:21:5
+   |
+21 |     pub fn new() -> QRDecoder {
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^ help: add the attribute: `#[must_use] pub fn new() -> QRDecoder`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#must_use_candidate
+
+error: item in documentation is missing backticks
+  --> src/decode/qr/decoder.rs:53:27
+   |
+53 | /// Functions the same as QRDecoder, apart from also returning some information about the decoded QR Code.
+   |                           ^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+   |
+53 - /// Functions the same as QRDecoder, apart from also returning some information about the decoded QR Code.
+53 + /// Functions the same as `QRDecoder`, apart from also returning some information about the decoded QR Code.
+   |
+
+error: item in documentation is missing backticks
+  --> src/decode/qr/decoder.rs:57:25
+   |
+57 |     /// Construct a new QRDecoder
+   |                         ^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+   |
+57 -     /// Construct a new QRDecoder
+57 +     /// Construct a new `QRDecoder`
+   |
+
+error: this method could have a `#[must_use]` attribute
+  --> src/decode/qr/decoder.rs:58:5
+   |
+58 |     pub fn new() -> QRDecoderWithInfo {
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: add the attribute: `#[must_use] pub fn new() -> QRDecoderWithInfo`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#must_use_candidate
+
+error: casting `usize` to `u32` may truncate the value on targets with 64-bit wide pointers
+  --> src/decode/qr/decoder.rs:85:26
+   |
+85 |         let total_data = (all_blocks.len() as u32) * 8;
+   |                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+   = note: `#[deny(clippy::cast_possible_truncation)]` implied by `#[deny(warnings)]`
+help: ... or use `try_from` and handle the error accordingly
+   |
+85 -         let total_data = (all_blocks.len() as u32) * 8;
+85 +         let total_data = u32::try_from(all_blocks.len()) * 8;
+   |
+
+error: variables can be used directly in the `format!` string
+   --> src/decode/qr/format.rs:144:5
+    |
+144 |     debug!("MASK {:03b}", bytes);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+144 -     debug!("MASK {:03b}", bytes);
+144 +     debug!("MASK {bytes:03b}");
+    |
+
+error: this function's return value is unnecessarily wrapped by `Option`
+   --> src/decode/qr/format.rs:160:1
+    |
+160 | fn qrmask(mask: Box<Mask>) -> Option<Box<QRMask>> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#unnecessary_wraps
+    = note: `#[deny(clippy::unnecessary_wraps)]` implied by `#[deny(warnings)]`
+help: remove `Option` from the return type...
+    |
+160 - fn qrmask(mask: Box<Mask>) -> Option<Box<QRMask>> {
+160 + fn qrmask(mask: Box<Mask>) -> std::boxed::Box<(dyn for<'a> std::ops::Fn(&'a util::qr::QRData, u32, u32) -> u8 + 'static)> {
+    |
+help: ...and then remove the surrounding `Some()` from returning expressions
+    |
+161 ~     Box::new(move |q: &QRData, i: u32, j: u32| {
+162 +         q[[i, j]] ^ (if mask(i, j) { 1 } else { 0 })
+163 +     })
+    |
+
+error: boolean to int conversion using if
+   --> src/decode/qr/format.rs:162:21
+    |
+162 |         q[[i, j]] ^ (if mask(i, j) { 1 } else { 0 })
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace with from: `u8::from(mask(i, j))`
+    |
+    = note: `mask(i, j) as u8` or `mask(i, j).into()` can also be valid options
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#bool_to_int_with_if
+    = note: `#[deny(clippy::bool_to_int_with_if)]` implied by `#[deny(warnings)]`
+
+error: casting `i16` to `usize` may lose the sign of the value
+  --> src/decode/qr/galois.rs:55:14
+   |
+55 |         EXP8[(diff % 255) as usize]
+   |              ^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+   = note: `#[deny(clippy::cast_sign_loss)]` implied by `#[deny(warnings)]`
+
+error: casting `i16` to `usize` may lose the sign of the value
+   --> src/decode/qr/galois.rs:107:14
+    |
+107 |         EXP4[diff as usize]
+    |              ^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: this function has too many lines (559/100)
+   --> src/decode/qr/mod.rs:31:1
+    |
+31  | / pub fn block_info(version: u32, level: &ECLevel) -> Result<Vec<BlockInfo>, QRError> {
+32  | |     let block_info = match (version, level) {
+33  | |         // Version 1
+34  | |         (1, ECLevel::LOW) => Ok(vec![BlockInfo::new(1, 26, 19, 2)]),
+...   |
+673 | |     Ok(bi_unwound)
+674 | | }
+    | |_^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#too_many_lines
+    = note: `#[deny(clippy::too_many_lines)]` implied by `#[deny(warnings)]`
+
+error: variables can be used directly in the `format!` string
+   --> src/decode/qr/mod.rs:658:18
+    |
+658 |               msg: format!(
+    |  __________________^
+659 | |                 "Unknown combination of version {} and level {:?}",
+660 | |                 version, level
+661 | |             ),
+    | |_____________^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+
+error: docs for function returning `Result` missing `# Errors` section
+  --> src/decode/mod.rs:46:5
+   |
+46 |     fn decode(&self, data: Result<DATA, ERROR>) -> Result<RESULT, ERROR>;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#missing_errors_doc
+   = note: `#[deny(clippy::missing_errors_doc)]` implied by `#[deny(warnings)]`
+
+error: item in documentation is missing backticks
+  --> src/detect/linescan.rs:27:24
+   |
+27 |     /// Constuct a new LineScan
+   |                        ^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+   |
+27 -     /// Constuct a new LineScan
+27 +     /// Constuct a new `LineScan`
+   |
+
+error: this method could have a `#[must_use]` attribute
+  --> src/detect/linescan.rs:28:5
+   |
+28 |     pub fn new() -> LineScan {
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^ help: add the attribute: `#[must_use] pub fn new() -> LineScan`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#must_use_candidate
+
+error: this function has too many lines (120/100)
+   --> src/detect/linescan.rs:36:5
+    |
+36  | /     fn detect(&self, prepared: &GrayImage) -> Vec<Location> {
+37  | |         // The order of refinement is important.
+38  | |         // The candidate is found in horizontal direction, so the first refinement is vertical
+39  | |         let refine_func: Vec<(Box<Refine>, f64, f64, bool)> = vec![
+...   |
+204 | |         locations
+205 | |     }
+    | |_____^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#too_many_lines
+
+error: this expression creates a reference which is immediately dereferenced by the compiler
+  --> src/detect/linescan.rs:95:40
+   |
+95 |                 let vert = refine_func(&self, prepared, &finder, module_size);
+   |                                        ^^^^^ help: change this to: `self`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#needless_borrow
+
+error: variables can be used directly in the `format!` string
+   --> src/detect/linescan.rs:123:9
+    |
+123 |         debug!("Candidate QR Locators {:#?}", candidates);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+123 -         debug!("Candidate QR Locators {:#?}", candidates);
+123 +         debug!("Candidate QR Locators {candidates:#?}");
+    |
+
+error: it is more concise to loop over references to containers instead of using explicit iteration methods
+   --> src/detect/linescan.rs:131:22
+    |
+131 |             for c in candidates.iter() {
+    |                      ^^^^^^^^^^^^^^^^^ help: to write this more concisely, try: `&candidates`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#explicit_iter_loop
+    = note: `#[deny(clippy::explicit_iter_loop)]` implied by `#[deny(warnings)]`
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/detect/linescan.rs:133:31
+    |
+133 |                 let x_start = (loc.x - 3.5 * c.module_size).max(0.0_f64) as u32;
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/detect/linescan.rs:133:31
+    |
+133 |                 let x_start = (loc.x - 3.5 * c.module_size).max(0.0_f64) as u32;
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/detect/linescan.rs:134:53
+    |
+134 |                 let x_end = min(img.dimensions().0, (loc.x + 3.5 * c.module_size) as u32);
+    |                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/detect/linescan.rs:134:53
+    |
+134 |                 let x_end = min(img.dimensions().0, (loc.x + 3.5 * c.module_size) as u32);
+    |                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/detect/linescan.rs:135:31
+    |
+135 |                 let y_start = (loc.y - 3.5 * c.module_size).max(0.0_f64) as u32;
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/detect/linescan.rs:135:31
+    |
+135 |                 let y_start = (loc.y - 3.5 * c.module_size).max(0.0_f64) as u32;
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/detect/linescan.rs:136:53
+    |
+136 |                 let y_end = min(img.dimensions().0, (loc.y + 3.5 * c.module_size) as u32);
+    |                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/detect/linescan.rs:136:53
+    |
+136 |                 let y_end = min(img.dimensions().0, (loc.y + 3.5 * c.module_size) as u32);
+    |                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: redundant pattern matching, consider using `is_ok()`
+   --> src/detect/linescan.rs:152:20
+    |
+152 |             if let Ok(_) = create_dir_all(tmp.clone()) {
+    |             -------^^^^^------------------------------ help: try: `if create_dir_all(tmp.clone()).is_ok()`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#redundant_pattern_matching
+    = note: `#[deny(clippy::redundant_pattern_matching)]` implied by `#[deny(warnings)]`
+
+error: matching over `()` is more explicit
+   --> src/detect/linescan.rs:152:23
+    |
+152 |             if let Ok(_) = create_dir_all(tmp.clone()) {
+    |                       ^ help: use `()` instead of `_`: `()`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#ignored_unit_patterns
+    = note: `#[deny(clippy::ignored_unit_patterns)]` implied by `#[deny(warnings)]`
+
+error: redundant pattern matching, consider using `is_ok()`
+   --> src/detect/linescan.rs:155:24
+    |
+155 |                 if let Ok(_) = DynamicImage::ImageRgb8(img).save(tmp.clone()) {
+    |                 -------^^^^^------------------------------------------------- help: try: `if DynamicImage::ImageRgb8(img).save(tmp.clone()).is_ok()`
+    |
+    = note: this will change drop order of the result, as well as all temporaries
+    = note: add `#[allow(clippy::redundant_pattern_matching)]` if this is important
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#redundant_pattern_matching
+
+error: matching over `()` is more explicit
+   --> src/detect/linescan.rs:155:27
+    |
+155 |                 if let Ok(_) = DynamicImage::ImageRgb8(img).save(tmp.clone()) {
+    |                           ^ help: use `()` instead of `_`: `()`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#ignored_unit_patterns
+
+error: unnecessary `Debug` formatting in `debug!` args
+   --> src/detect/linescan.rs:156:81
+    |
+156 |                     debug!("Debug image with locator candidates saved to {:?}", tmp);
+    |                                                                                 ^^^
+    |
+    = help: use `Display` formatting and change this to `tmp.display()`
+    = note: switching to `Display` formatting will change how the value is shown; escaped characters will no longer be escaped and surrounding quotes will be removed
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#unnecessary_debug_formatting
+    = note: `#[deny(clippy::unnecessary_debug_formatting)]` implied by `#[deny(warnings)]`
+
+error: variables can be used directly in the `format!` string
+   --> src/detect/linescan.rs:156:21
+    |
+156 |                     debug!("Debug image with locator candidates saved to {:?}", tmp);
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+156 -                     debug!("Debug image with locator candidates saved to {:?}", tmp);
+156 +                     debug!("Debug image with locator candidates saved to {tmp:?}");
+    |
+
+error: variables can be used directly in the `format!` string
+   --> src/detect/linescan.rs:174:17
+    |
+174 |                 trace!("DIFF 1 {}", diff1);
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+174 -                 trace!("DIFF 1 {}", diff1);
+174 +                 trace!("DIFF 1 {diff1}");
+    |
+
+error: variables can be used directly in the `format!` string
+   --> src/detect/linescan.rs:186:21
+    |
+186 |                     trace!("DIFF 2 {}", diff2);
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+186 -                     trace!("DIFF 2 {}", diff2);
+186 +                     trace!("DIFF 2 {diff2}");
+    |
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/detect/linescan.rs:217:23
+    |
+217 |         let start_x = (finder.x - 5.0 * module_size).max(0.0_f64).round() as u32;
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/detect/linescan.rs:217:23
+    |
+217 |         let start_x = (finder.x - 5.0 * module_size).max(0.0_f64).round() as u32;
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/detect/linescan.rs:219:13
+    |
+219 |             (finder.x + 5.0 * module_size).round() as u32,
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/detect/linescan.rs:219:13
+    |
+219 |             (finder.x + 5.0 * module_size).round() as u32,
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/detect/linescan.rs:225:30
+    |
+225 |         let range_y = repeat(finder.y.round() as u32);
+    |                              ^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/detect/linescan.rs:225:30
+    |
+225 |         let range_y = repeat(finder.y.round() as u32);
+    |                              ^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/detect/linescan.rs:238:23
+    |
+238 |         let start_y = (finder.y - 5.0 * module_size).max(0.0_f64).round() as u32;
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/detect/linescan.rs:238:23
+    |
+238 |         let start_y = (finder.y - 5.0 * module_size).max(0.0_f64).round() as u32;
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/detect/linescan.rs:240:13
+    |
+240 |             (finder.y + 5.0 * module_size).round() as u32,
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/detect/linescan.rs:240:13
+    |
+240 |             (finder.y + 5.0 * module_size).round() as u32,
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/detect/linescan.rs:245:30
+    |
+245 |         let range_x = repeat(finder.x.round() as u32);
+    |                              ^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/detect/linescan.rs:245:30
+    |
+245 |         let range_x = repeat(finder.x.round() as u32);
+    |                              ^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/detect/linescan.rs:280:23
+    |
+280 |         let range_x = start_x.round() as u32
+    |                       ^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/detect/linescan.rs:280:23
+    |
+280 |         let range_x = start_x.round() as u32
+    |                       ^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/detect/linescan.rs:282:17
+    |
+282 |                 (finder.x + 5.0 * module_size).round() as u32,
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/detect/linescan.rs:282:17
+    |
+282 |                 (finder.x + 5.0 * module_size).round() as u32,
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/detect/linescan.rs:285:23
+    |
+285 |         let range_y = start_y.round() as u32
+    |                       ^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/detect/linescan.rs:285:23
+    |
+285 |         let range_y = start_y.round() as u32
+    |                       ^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/detect/linescan.rs:287:17
+    |
+287 |                 (finder.y + 5.0 * module_size).round() as u32,
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/detect/linescan.rs:287:17
+    |
+287 |                 (finder.y + 5.0 * module_size).round() as u32,
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: unused `self` argument
+   --> src/detect/linescan.rs:295:9
+    |
+295 |         &self,
+    |         ^^^^^
+    |
+    = help: consider refactoring to an associated function
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#unused_self
+    = note: `#[deny(clippy::unused_self)]` implied by `#[deny(warnings)]`
+
+error: manual implementation of `midpoint` which can overflow
+   --> src/detect/linescan.rs:319:44
+    |
+319 |                     let new_est_mod_size = (module_size + pattern.est_mod_size()) / 2.0;
+    |                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use `f64::midpoint` instead: `f64::midpoint(module_size, pattern.est_mod_size())`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#manual_midpoint
+    = note: `#[deny(clippy::manual_midpoint)]` implied by `#[deny(warnings)]`
+
+error: manual implementation of `midpoint` which can overflow
+   --> src/detect/linescan.rs:344:36
+    |
+344 |             let new_est_mod_size = (module_size + pattern.est_mod_size()) / 2.0;
+    |                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use `f64::midpoint` instead: `f64::midpoint(module_size, pattern.est_mod_size())`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#manual_midpoint
+
+error: manual implementation of `Option::map`
+   --> src/detect/linescan.rs:456:12
+    |
+456 |       } else if let Some(qr) = find_qr_internal(three, one, two, module_size) {
+    |  ____________^
+457 | |         Some(qr)
+458 | |     } else {
+459 | |         None
+460 | |     }
+    | |_____^ help: try: `{ find_qr_internal(three, one, two, module_size).map(|qr| qr) }`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#manual_map
+    = note: `#[deny(clippy::manual_map)]` implied by `#[deny(warnings)]`
+
+error: variables can be used directly in the `format!` string
+   --> src/detect/linescan.rs:488:5
+    |
+488 |     trace!("PERPENDICULAR {}", perpendicular);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+488 -     trace!("PERPENDICULAR {}", perpendicular);
+488 +     trace!("PERPENDICULAR {perpendicular}");
+    |
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/detect/linescan.rs:496:20
+    |
+496 |     let mut dist = ((dist(one, three) / module_size) + 7.0) as u32;
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/detect/linescan.rs:496:20
+    |
+496 |     let mut dist = ((dist(one, three) / module_size) + 7.0) as u32;
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: variables can be used directly in the `format!` string
+   --> src/detect/linescan.rs:498:5
+    |
+498 |     trace!("DIST {}", dist);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+498 -     trace!("DIST {}", dist);
+498 +     trace!("DIST {dist}");
+    |
+
+error: item in documentation is missing backticks
+  --> src/extract/qr/mod.rs:28:25
+   |
+28 |     /// Construct a new QRExtractor
+   |                         ^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+   |
+28 -     /// Construct a new QRExtractor
+28 +     /// Construct a new `QRExtractor`
+   |
+
+error: this method could have a `#[must_use]` attribute
+  --> src/extract/qr/mod.rs:29:5
+   |
+29 |     pub fn new() -> QRExtractor {
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: add the attribute: `#[must_use] pub fn new() -> QRExtractor`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#must_use_candidate
+
+error: variables can be used directly in the `format!` string
+  --> src/extract/qr/mod.rs:39:9
+   |
+39 |         debug!("PERSPECTIVE {:?}", p);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+   |
+39 -         debug!("PERSPECTIVE {:?}", p);
+39 +         debug!("PERSPECTIVE {p:?}");
+   |
+
+error: variables can be used directly in the `format!` string
+  --> src/extract/qr/mod.rs:43:9
+   |
+43 |         debug!("START {:?}", start);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+   |
+43 -         debug!("START {:?}", start);
+43 +         debug!("START {start:?}");
+   |
+
+error: casting `f64` to `u32` may truncate the value
+  --> src/extract/qr/mod.rs:56:25
+   |
+56 |                 let x = line.x.round() as u32;
+   |                         ^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+  --> src/extract/qr/mod.rs:56:25
+   |
+56 |                 let x = line.x.round() as u32;
+   |                         ^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+  --> src/extract/qr/mod.rs:57:25
+   |
+57 |                 let y = line.y.round() as u32;
+   |                         ^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+  --> src/extract/qr/mod.rs:57:25
+   |
+57 |                 let y = line.y.round() as u32;
+   |                         ^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: redundant pattern matching, consider using `is_ok()`
+  --> src/extract/qr/mod.rs:86:20
+   |
+86 |             if let Ok(_) = create_dir_all(tmp.clone()) {
+   |             -------^^^^^------------------------------ help: try: `if create_dir_all(tmp.clone()).is_ok()`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#redundant_pattern_matching
+
+error: matching over `()` is more explicit
+  --> src/extract/qr/mod.rs:86:23
+   |
+86 |             if let Ok(_) = create_dir_all(tmp.clone()) {
+   |                       ^ help: use `()` instead of `_`: `()`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#ignored_unit_patterns
+
+error: redundant pattern matching, consider using `is_ok()`
+  --> src/extract/qr/mod.rs:92:24
+   |
+92 |                 if let Ok(_) = DynamicImage::ImageRgb8(img).save(tmp.clone()) {
+   |                 -------^^^^^------------------------------------------------- help: try: `if DynamicImage::ImageRgb8(img).save(tmp.clone()).is_ok()`
+   |
+   = note: this will change drop order of the result, as well as all temporaries
+   = note: add `#[allow(clippy::redundant_pattern_matching)]` if this is important
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#redundant_pattern_matching
+
+error: matching over `()` is more explicit
+  --> src/extract/qr/mod.rs:92:27
+   |
+92 |                 if let Ok(_) = DynamicImage::ImageRgb8(img).save(tmp.clone()) {
+   |                           ^ help: use `()` instead of `_`: `()`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#ignored_unit_patterns
+
+error: unnecessary `Debug` formatting in `debug!` args
+  --> src/extract/qr/mod.rs:93:74
+   |
+93 |                     debug!("Debug image with data pixels saved to {:?}", tmp);
+   |                                                                          ^^^
+   |
+   = help: use `Display` formatting and change this to `tmp.display()`
+   = note: switching to `Display` formatting will change how the value is shown; escaped characters will no longer be escaped and surrounding quotes will be removed
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#unnecessary_debug_formatting
+
+error: variables can be used directly in the `format!` string
+  --> src/extract/qr/mod.rs:93:21
+   |
+93 |                     debug!("Debug image with data pixels saved to {:?}", tmp);
+   |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+   |
+93 -                     debug!("Debug image with data pixels saved to {:?}", tmp);
+93 +                     debug!("Debug image with data pixels saved to {tmp:?}");
+   |
+
+error: this function has too many lines (137/100)
+   --> src/extract/qr/mod.rs:102:1
+    |
+102 | / fn determine_perspective(
+103 | |     prepared: &GrayImage,
+104 | |     version: u32,
+105 | |     size: u32,
+...   |
+276 | |     Ok(Perspective::new(dx, delta, dy, Delta { dx: 0.0, dy: 0.0 }))
+277 | | }
+    | |_^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#too_many_lines
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:183:16
+    |
+183 |     let al_x = est_alignment.x.round() as u32;
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:183:16
+    |
+183 |     let al_x = est_alignment.x.round() as u32;
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:184:16
+    |
+184 |     let al_y = est_alignment.y.round() as u32;
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:184:16
+    |
+184 |     let al_y = est_alignment.y.round() as u32;
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: variables can be used directly in the `format!` string
+   --> src/extract/qr/mod.rs:201:5
+    |
+201 |     debug!("LEFT X {} RIGHT X {}", left_x, right_x);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+201 -     debug!("LEFT X {} RIGHT X {}", left_x, right_x);
+201 +     debug!("LEFT X {left_x} RIGHT X {right_x}");
+    |
+
+error: manual implementation of `midpoint` which can overflow
+   --> src/extract/qr/mod.rs:202:23
+    |
+202 |     est_alignment.x = (f64::from(left_x) + f64::from(right_x)) / 2.0;
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use `f64::midpoint` instead: `f64::midpoint(f64::from(left_x), f64::from(right_x))`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#manual_midpoint
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:204:16
+    |
+204 |     let al_x = est_alignment.x.round() as u32;
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:204:16
+    |
+204 |     let al_x = est_alignment.x.round() as u32;
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:205:16
+    |
+205 |     let al_y = est_alignment.y.round() as u32;
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:205:16
+    |
+205 |     let al_y = est_alignment.y.round() as u32;
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: variables can be used directly in the `format!` string
+   --> src/extract/qr/mod.rs:223:5
+    |
+223 |     debug!("TOP Y {} BOTTOM Y {}", top_y, bottom_y);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+223 -     debug!("TOP Y {} BOTTOM Y {}", top_y, bottom_y);
+223 +     debug!("TOP Y {top_y} BOTTOM Y {bottom_y}");
+    |
+
+error: manual implementation of `midpoint` which can overflow
+   --> src/extract/qr/mod.rs:224:23
+    |
+224 |     est_alignment.y = (f64::from(top_y) + f64::from(bottom_y)) / 2.0;
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use `f64::midpoint` instead: `f64::midpoint(f64::from(top_y), f64::from(bottom_y))`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#manual_midpoint
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:230:30
+    |
+230 |         let x_start = max(0, (est_alignment.x - 2.5 * loc.module_size) as u32);
+    |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:230:30
+    |
+230 |         let x_start = max(0, (est_alignment.x - 2.5 * loc.module_size) as u32);
+    |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:233:13
+    |
+233 |             (est_alignment.x + 2.5 * loc.module_size) as u32,
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:233:13
+    |
+233 |             (est_alignment.x + 2.5 * loc.module_size) as u32,
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:235:30
+    |
+235 |         let y_start = max(0, (est_alignment.y - 2.5 * loc.module_size) as u32);
+    |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:235:30
+    |
+235 |         let y_start = max(0, (est_alignment.y - 2.5 * loc.module_size) as u32);
+    |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:238:13
+    |
+238 |             (est_alignment.y + 2.5 * loc.module_size) as u32,
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:238:13
+    |
+238 |             (est_alignment.y + 2.5 * loc.module_size) as u32,
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: redundant pattern matching, consider using `is_ok()`
+   --> src/extract/qr/mod.rs:254:16
+    |
+254 |         if let Ok(_) = create_dir_all(tmp.clone()) {
+    |         -------^^^^^------------------------------ help: try: `if create_dir_all(tmp.clone()).is_ok()`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#redundant_pattern_matching
+
+error: matching over `()` is more explicit
+   --> src/extract/qr/mod.rs:254:19
+    |
+254 |         if let Ok(_) = create_dir_all(tmp.clone()) {
+    |                   ^ help: use `()` instead of `_`: `()`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#ignored_unit_patterns
+
+error: redundant pattern matching, consider using `is_ok()`
+   --> src/extract/qr/mod.rs:257:20
+    |
+257 |             if let Ok(_) = DynamicImage::ImageRgb8(img).save(tmp.clone()) {
+    |             -------^^^^^------------------------------------------------- help: try: `if DynamicImage::ImageRgb8(img).save(tmp.clone()).is_ok()`
+    |
+    = note: this will change drop order of the result, as well as all temporaries
+    = note: add `#[allow(clippy::redundant_pattern_matching)]` if this is important
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#redundant_pattern_matching
+
+error: matching over `()` is more explicit
+   --> src/extract/qr/mod.rs:257:23
+    |
+257 |             if let Ok(_) = DynamicImage::ImageRgb8(img).save(tmp.clone()) {
+    |                       ^ help: use `()` instead of `_`: `()`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#ignored_unit_patterns
+
+error: unnecessary `Debug` formatting in `debug!` args
+   --> src/extract/qr/mod.rs:258:70
+    |
+258 |                 debug!("Debug image with data pixels saved to {:?}", tmp);
+    |                                                                      ^^^
+    |
+    = help: use `Display` formatting and change this to `tmp.display()`
+    = note: switching to `Display` formatting will change how the value is shown; escaped characters will no longer be escaped and surrounding quotes will be removed
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#unnecessary_debug_formatting
+
+error: variables can be used directly in the `format!` string
+   --> src/extract/qr/mod.rs:258:17
+    |
+258 |                 debug!("Debug image with data pixels saved to {:?}", tmp);
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+258 -                 debug!("Debug image with data pixels saved to {:?}", tmp);
+258 +                 debug!("Debug image with data pixels saved to {tmp:?}");
+    |
+
+error: variables can be used directly in the `format!` string
+   --> src/extract/qr/mod.rs:268:5
+    |
+268 |     debug!("ORIG EST {:?}, NEW EST {:?}", orig_estimate, est_alignment);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+268 -     debug!("ORIG EST {:?}, NEW EST {:?}", orig_estimate, est_alignment);
+268 +     debug!("ORIG EST {orig_estimate:?}, NEW EST {est_alignment:?}");
+    |
+
+error: variables can be used directly in the `format!` string
+   --> src/extract/qr/mod.rs:272:5
+    |
+272 |     debug!("DELTA {:?}", delta);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+272 -     debug!("DELTA {:?}", delta);
+272 +     debug!("DELTA {delta:?}");
+    |
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:294:11
+    |
+294 |         let x = pp.x.round() as u32;
+    |                 ^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:294:11
+    |
+294 |         let x = pp.x.round() as u32;
+    |                 ^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:295:11
+    |
+295 |         let y = pp.y.round() as u32;
+    |                 ^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:295:11
+    |
+295 |         let y = pp.y.round() as u32;
+    |                 ^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: redundant pattern matching, consider using `is_ok()`
+   --> src/extract/qr/mod.rs:306:16
+    |
+306 |         if let Ok(_) = create_dir_all(tmp.clone()) {
+    |         -------^^^^^------------------------------ help: try: `if create_dir_all(tmp.clone()).is_ok()`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#redundant_pattern_matching
+
+error: matching over `()` is more explicit
+   --> src/extract/qr/mod.rs:306:19
+    |
+306 |         if let Ok(_) = create_dir_all(tmp.clone()) {
+    |                   ^ help: use `()` instead of `_`: `()`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#ignored_unit_patterns
+
+error: redundant pattern matching, consider using `is_ok()`
+   --> src/extract/qr/mod.rs:312:20
+    |
+312 |             if let Ok(_) = DynamicImage::ImageRgb8(img).save(tmp.clone()) {
+    |             -------^^^^^------------------------------------------------- help: try: `if DynamicImage::ImageRgb8(img).save(tmp.clone()).is_ok()`
+    |
+    = note: this will change drop order of the result, as well as all temporaries
+    = note: add `#[allow(clippy::redundant_pattern_matching)]` if this is important
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#redundant_pattern_matching
+
+error: matching over `()` is more explicit
+   --> src/extract/qr/mod.rs:312:23
+    |
+312 |             if let Ok(_) = DynamicImage::ImageRgb8(img).save(tmp.clone()) {
+    |                       ^ help: use `()` instead of `_`: `()`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#ignored_unit_patterns
+
+error: unnecessary `Debug` formatting in `debug!` args
+   --> src/extract/qr/mod.rs:313:70
+    |
+313 |                 debug!("Debug image with data pixels saved to {:?}", tmp);
+    |                                                                      ^^^
+    |
+    = help: use `Display` formatting and change this to `tmp.display()`
+    = note: switching to `Display` formatting will change how the value is shown; escaped characters will no longer be escaped and surrounding quotes will be removed
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#unnecessary_debug_formatting
+
+error: variables can be used directly in the `format!` string
+   --> src/extract/qr/mod.rs:313:17
+    |
+313 |                 debug!("Debug image with data pixels saved to {:?}", tmp);
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+313 -                 debug!("Debug image with data pixels saved to {:?}", tmp);
+313 +                 debug!("Debug image with data pixels saved to {tmp:?}");
+    |
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:331:31
+    |
+331 |         if prepared.get_pixel(twice_up.x.round() as u32, twice_up.y.round() as u32)[0] == 255 {
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:331:31
+    |
+331 |         if prepared.get_pixel(twice_up.x.round() as u32, twice_up.y.round() as u32)[0] == 255 {
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:331:58
+    |
+331 |         if prepared.get_pixel(twice_up.x.round() as u32, twice_up.y.round() as u32)[0] == 255 {
+    |                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:331:58
+    |
+331 |         if prepared.get_pixel(twice_up.x.round() as u32, twice_up.y.round() as u32)[0] == 255 {
+    |                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:336:31
+    |
+336 |         if prepared.get_pixel(twice_down.x.round() as u32, twice_down.y.round() as u32)[0] == 255 {
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:336:31
+    |
+336 |         if prepared.get_pixel(twice_down.x.round() as u32, twice_down.y.round() as u32)[0] == 255 {
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:336:60
+    |
+336 |         if prepared.get_pixel(twice_down.x.round() as u32, twice_down.y.round() as u32)[0] == 255 {
+    |                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:336:60
+    |
+336 |         if prepared.get_pixel(twice_down.x.round() as u32, twice_down.y.round() as u32)[0] == 255 {
+    |                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:343:31
+    |
+343 |         if prepared.get_pixel(twice_left.x.round() as u32, twice_left.y.round() as u32)[0] == 255 {
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:343:31
+    |
+343 |         if prepared.get_pixel(twice_left.x.round() as u32, twice_left.y.round() as u32)[0] == 255 {
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:343:60
+    |
+343 |         if prepared.get_pixel(twice_left.x.round() as u32, twice_left.y.round() as u32)[0] == 255 {
+    |                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:343:60
+    |
+343 |         if prepared.get_pixel(twice_left.x.round() as u32, twice_left.y.round() as u32)[0] == 255 {
+    |                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:348:31
+    |
+348 |         if prepared.get_pixel(twice_right.x.round() as u32, twice_right.y.round() as u32)[0] == 255
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:348:31
+    |
+348 |         if prepared.get_pixel(twice_right.x.round() as u32, twice_right.y.round() as u32)[0] == 255
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:348:61
+    |
+348 |         if prepared.get_pixel(twice_right.x.round() as u32, twice_right.y.round() as u32)[0] == 255
+    |                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:348:61
+    |
+348 |         if prepared.get_pixel(twice_right.x.round() as u32, twice_right.y.round() as u32)[0] == 255
+    |                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:354:31
+    |
+354 |         if prepared.get_pixel(left.x.round() as u32, left.y.round() as u32)[0] == 0 {
+    |                               ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:354:31
+    |
+354 |         if prepared.get_pixel(left.x.round() as u32, left.y.round() as u32)[0] == 0 {
+    |                               ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:354:54
+    |
+354 |         if prepared.get_pixel(left.x.round() as u32, left.y.round() as u32)[0] == 0 {
+    |                                                      ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:354:54
+    |
+354 |         if prepared.get_pixel(left.x.round() as u32, left.y.round() as u32)[0] == 0 {
+    |                                                      ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:359:31
+    |
+359 |         if prepared.get_pixel(right.x.round() as u32, right.y.round() as u32)[0] == 0 {
+    |                               ^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:359:31
+    |
+359 |         if prepared.get_pixel(right.x.round() as u32, right.y.round() as u32)[0] == 0 {
+    |                               ^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:359:55
+    |
+359 |         if prepared.get_pixel(right.x.round() as u32, right.y.round() as u32)[0] == 0 {
+    |                                                       ^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:359:55
+    |
+359 |         if prepared.get_pixel(right.x.round() as u32, right.y.round() as u32)[0] == 0 {
+    |                                                       ^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:365:27
+    |
+365 |     if prepared.get_pixel(up.x.round() as u32, up.y.round() as u32)[0] == 0 {
+    |                           ^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:365:27
+    |
+365 |     if prepared.get_pixel(up.x.round() as u32, up.y.round() as u32)[0] == 0 {
+    |                           ^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:365:48
+    |
+365 |     if prepared.get_pixel(up.x.round() as u32, up.y.round() as u32)[0] == 0 {
+    |                                                ^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:365:48
+    |
+365 |     if prepared.get_pixel(up.x.round() as u32, up.y.round() as u32)[0] == 0 {
+    |                                                ^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:370:27
+    |
+370 |     if prepared.get_pixel(down.x.round() as u32, down.y.round() as u32)[0] == 0 {
+    |                           ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:370:27
+    |
+370 |     if prepared.get_pixel(down.x.round() as u32, down.y.round() as u32)[0] == 0 {
+    |                           ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:370:50
+    |
+370 |     if prepared.get_pixel(down.x.round() as u32, down.y.round() as u32)[0] == 0 {
+    |                                                  ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:370:50
+    |
+370 |     if prepared.get_pixel(down.x.round() as u32, down.y.round() as u32)[0] == 0 {
+    |                                                  ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:374:24
+    |
+374 |     prepared.get_pixel(p.x.round() as u32, p.y.round() as u32)[0] == 0
+    |                        ^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:374:24
+    |
+374 |     prepared.get_pixel(p.x.round() as u32, p.y.round() as u32)[0] == 0
+    |                        ^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: casting `f64` to `u32` may truncate the value
+   --> src/extract/qr/mod.rs:374:44
+    |
+374 |     prepared.get_pixel(p.x.round() as u32, p.y.round() as u32)[0] == 0
+    |                                            ^^^^^^^^^^^^^^^^^^
+    |
+    = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+
+error: casting `f64` to `u32` may lose the sign of the value
+   --> src/extract/qr/mod.rs:374:44
+    |
+374 |     prepared.get_pixel(p.x.round() as u32, p.y.round() as u32)[0] == 0
+    |                                            ^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+error: docs for function returning `Result` missing `# Errors` section
+  --> src/extract/mod.rs:49:5
+   |
+49 |     fn extract(&self, prepared: &PREPD, loc: LOC) -> Result<DATA, ERROR>;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#missing_errors_doc
+
+error: item in documentation is missing backticks
+  --> src/prepare/blockedmean.rs:20:25
+   |
+20 |     /// Construct a new BlockedMean
+   |                         ^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+   |
+20 -     /// Construct a new BlockedMean
+20 +     /// Construct a new `BlockedMean`
+   |
+
+error: this method could have a `#[must_use]` attribute
+  --> src/prepare/blockedmean.rs:26:5
+   |
+26 |     pub fn new(block_size: u32, block_mean_size: u32) -> BlockedMean {
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: add the attribute: `#[must_use] pub fn new(block_size: u32, block_mean_size: u32) -> BlockedMean`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#must_use_candidate
+
+error: casting `u64` to `f64` causes a loss of precision (`u64` is 64 bits wide, but `f64`'s mantissa is only 52 bits wide)
+  --> src/prepare/blockedmean.rs:76:25
+   |
+76 |             stat.mean = stat.total as f64 / stat.count as f64;
+   |                         ^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_precision_loss
+   = note: `#[deny(clippy::cast_precision_loss)]` implied by `#[deny(warnings)]`
+
+error: casting `u64` to `f64` causes a loss of precision (`u64` is 64 bits wide, but `f64`'s mantissa is only 52 bits wide)
+  --> src/prepare/blockedmean.rs:76:45
+   |
+76 |             stat.mean = stat.total as f64 / stat.count as f64;
+   |                                             ^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_precision_loss
+
+error: casting `u64` to `f64` causes a loss of precision (`u64` is 64 bits wide, but `f64`'s mantissa is only 52 bits wide)
+   --> src/prepare/blockedmean.rs:123:21
+    |
+123 |                     total as f64 / count as f64;
+    |                     ^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_precision_loss
+
+error: casting `u64` to `f64` causes a loss of precision (`u64` is 64 bits wide, but `f64`'s mantissa is only 52 bits wide)
+   --> src/prepare/blockedmean.rs:123:36
+    |
+123 |                     total as f64 / count as f64;
+    |                                    ^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_precision_loss
+
+error: this method could have a `#[must_use]` attribute
+  --> src/util/chomp.rs:35:5
+   |
+35 |     pub fn new(bytes: Vec<u8>) -> Chomp {
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: add the attribute: `#[must_use] pub fn new(bytes: Vec<u8>) -> Chomp`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#must_use_candidate
+
+error: docs for function returning `Result` missing `# Errors` section
+  --> src/util/chomp.rs:55:5
+   |
+55 |     pub fn chomp_or<E>(&mut self, nr_bits: u8, err: E) -> Result<u8, E> {
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#missing_errors_doc
+
+error: docs for function returning `Result` missing `# Errors` section
+  --> src/util/chomp.rs:61:5
+   |
+61 |     pub fn chomp_or_u16<E: Clone>(&mut self, nr_bits: u8, err: E) -> Result<u16, E> {
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#missing_errors_doc
+
+error: docs for function which may panic missing `# Panics` section
+   --> src/util/chomp.rs:77:5
+    |
+77  |     pub fn chomp(&mut self, nr_bits: u8) -> Option<u8> {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+note: first possible panic found here
+   --> src/util/chomp.rs:116:26
+    |
+116 |               let nibble = self.nibble(bits_to_go)
+    |  __________________________^
+117 | |                 .expect("nibble() should succeed after successful peek()"); // we just peeked
+    | |__________________________________________________________________________^
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#missing_panics_doc
+    = note: `#[deny(clippy::missing_panics_doc)]` implied by `#[deny(warnings)]`
+
+error: manual `!RangeInclusive::contains` implementation
+  --> src/util/chomp.rs:79:12
+   |
+79 |         if nr_bits < 1 || nr_bits > 8 || bit_count > self.bits_left {
+   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use: `!(1..=8).contains(&nr_bits)`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#manual_range_contains
+   = note: `#[deny(clippy::manual_range_contains)]` implied by `#[deny(warnings)]`
+
+error: item in documentation is missing backticks
+  --> src/util/qr.rs:59:22
+   |
+59 |     /// Create a new QRData object with the provided data and version. `side` will be calculated automatically.
+   |                      ^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#doc_markdown
+help: try
+   |
+59 -     /// Create a new QRData object with the provided data and version. `side` will be calculated automatically.
+59 +     /// Create a new `QRData` object with the provided data and version. `side` will be calculated automatically.
+   |
+
+error: this method could have a `#[must_use]` attribute
+  --> src/util/qr.rs:60:5
+   |
+60 |     pub fn new(data: Vec<u8>, version: u32) -> QRData {
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: add the attribute: `#[must_use] pub fn new(data: Vec<u8>, version: u32) -> QRData`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#must_use_candidate
+
+error: non-local `impl` definition, `impl` blocks should be written at the same level as their item
+  --> src/decoder.rs:15:17
+   |
+15 | #[derive(Debug, Fail)]
+   |                 ^---
+   |                 |
+   |                 `Fail` is not local
+   |                 move the `impl` block outside of this constant `_DERIVE_failure_Fail_FOR_BuilderError`
+16 | pub enum BuilderError {
+   |          ------------ `BuilderError` is not local
+   |
+   = note: the derive macro `Fail` defines the non-local `impl`, and may need to be changed
+   = note: the derive macro `Fail` may come from an old version of the `failure_derive` crate, try updating your dependency with `cargo update -p failure_derive`
+   = note: an `impl` is never scoped, even when it is nested inside an item, as it may impact type checking outside of that item, which can be the case if neither the trait or the self type are at the same nesting level as the `impl`
+   = note: items in an anonymous const item (`const _: () = { ... }`) are treated as in the same scope as the anonymous const's declaration for the purpose of this lint
+   = note: `#[deny(non_local_definitions)]` implied by `#[deny(warnings)]`
+   = note: this error originates in the derive macro `Fail` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: non-local `impl` definition, `impl` blocks should be written at the same level as their item
+  --> src/decoder.rs:15:17
+   |
+15 | #[derive(Debug, Fail)]
+   |                 ^---
+   |                 |
+   |                 `Display` is not local
+   |                 move the `impl` block outside of this constant `_DERIVE_failure_core_fmt_Display_FOR_BuilderError`
+16 | pub enum BuilderError {
+   |          ------------ `BuilderError` is not local
+   |
+   = note: the derive macro `Fail` defines the non-local `impl`, and may need to be changed
+   = note: the derive macro `Fail` may come from an old version of the `failure_derive` crate, try updating your dependency with `cargo update -p failure_derive`
+   = note: an `impl` is never scoped, even when it is nested inside an item, as it may impact type checking outside of that item, which can be the case if neither the trait or the self type are at the same nesting level as the `impl`
+   = note: items in an anonymous const item (`const _: () = { ... }`) are treated as in the same scope as the anonymous const's declaration for the purpose of this lint
+   = note: this error originates in the derive macro `Fail` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: non-local `impl` definition, `impl` blocks should be written at the same level as their item
+  --> src/util/qr.rs:10:10
+   |
+10 | #[derive(Fail, Debug, Clone, PartialEq)]
+   |          ^---
+   |          |
+   |          `Fail` is not local
+   |          move the `impl` block outside of this constant `_DERIVE_failure_Fail_FOR_QRError`
+11 | #[fail(display = "Error decoding QR Code: {}", msg)]
+12 | pub struct QRError {
+   |            ------- `QRError` is not local
+   |
+   = note: the derive macro `Fail` defines the non-local `impl`, and may need to be changed
+   = note: the derive macro `Fail` may come from an old version of the `failure_derive` crate, try updating your dependency with `cargo update -p failure_derive`
+   = note: an `impl` is never scoped, even when it is nested inside an item, as it may impact type checking outside of that item, which can be the case if neither the trait or the self type are at the same nesting level as the `impl`
+   = note: items in an anonymous const item (`const _: () = { ... }`) are treated as in the same scope as the anonymous const's declaration for the purpose of this lint
+   = note: this error originates in the derive macro `Fail` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: non-local `impl` definition, `impl` blocks should be written at the same level as their item
+  --> src/util/qr.rs:10:10
+   |
+10 | #[derive(Fail, Debug, Clone, PartialEq)]
+   |          ^---
+   |          |
+   |          `Display` is not local
+   |          move the `impl` block outside of this constant `_DERIVE_failure_core_fmt_Display_FOR_QRError`
+11 | #[fail(display = "Error decoding QR Code: {}", msg)]
+12 | pub struct QRError {
+   |            ------- `QRError` is not local
+   |
+   = note: the derive macro `Fail` defines the non-local `impl`, and may need to be changed
+   = note: the derive macro `Fail` may come from an old version of the `failure_derive` crate, try updating your dependency with `cargo update -p failure_derive`
+   = note: an `impl` is never scoped, even when it is nested inside an item, as it may impact type checking outside of that item, which can be the case if neither the trait or the self type are at the same nesting level as the `impl`
+   = note: items in an anonymous const item (`const _: () = { ... }`) are treated as in the same scope as the anonymous const's declaration for the purpose of this lint
+   = note: this error originates in the derive macro `Fail` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: manual `RangeInclusive::contains` implementation
+   --> src/decode/qr/blocks.rs:285:16
+    |
+285 |             if (x >= 4 && x <= 8)
+    |                ^^^^^^^^^^^^^^^^^^ help: use: `(4..=8).contains(&x)`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#manual_range_contains
+    = note: `#[deny(clippy::manual_range_contains)]` implied by `#[deny(warnings)]`
+
+error: manual `RangeInclusive::contains` implementation
+   --> src/decode/qr/blocks.rs:286:20
+    |
+286 |                 || (x >= 22 && x <= 26)
+    |                    ^^^^^^^^^^^^^^^^^^^^ help: use: `(22..=26).contains(&x)`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#manual_range_contains
+
+error: manual `RangeInclusive::contains` implementation
+   --> src/decode/qr/blocks.rs:287:20
+    |
+287 |                 || (x >= 48 && x <= 52)
+    |                    ^^^^^^^^^^^^^^^^^^^^ help: use: `(48..=52).contains(&x)`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#manual_range_contains
+
+error: manual `RangeInclusive::contains` implementation
+   --> src/decode/qr/blocks.rs:288:20
+    |
+288 |                 || (x >= 74 && x <= 78)
+    |                    ^^^^^^^^^^^^^^^^^^^^ help: use: `(74..=78).contains(&x)`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#manual_range_contains
+
+error: manual `RangeInclusive::contains` implementation
+   --> src/decode/qr/blocks.rs:289:20
+    |
+289 |                 || (x >= 100 && x <= 104)
+    |                    ^^^^^^^^^^^^^^^^^^^^^^ help: use: `(100..=104).contains(&x)`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#manual_range_contains
+
+error: manual `RangeInclusive::contains` implementation
+   --> src/decode/qr/blocks.rs:290:20
+    |
+290 |                 || (x >= 126 && x <= 130)
+    |                    ^^^^^^^^^^^^^^^^^^^^^^ help: use: `(126..=130).contains(&x)`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#manual_range_contains
+
+error: manual `RangeInclusive::contains` implementation
+   --> src/decode/qr/blocks.rs:291:20
+    |
+291 |                 || (x >= 152 && x <= 156)
+    |                    ^^^^^^^^^^^^^^^^^^^^^^ help: use: `(152..=156).contains(&x)`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#manual_range_contains
+
+error: could not compile `bardecoder` (lib) due to 237 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: variables can be used directly in the `format!` string
+   --> src/decode/qr/format.rs:206:9
+    |
+206 |         println!("{:?}", output);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#uninlined_format_args
+help: change this to
+    |
+206 -         println!("{:?}", output);
+206 +         println!("{output:?}");
+    |
+
+error: items after a test module
+   --> src/decode/qr/galois.rs:112:1
+    |
+112 | mod test {
+    | ^^^^^^^^
+...
+266 | pub const EXP8: [GF8; 256] = [
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+525 | pub const LOG8: [u8; 256] = [
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+544 | pub const EXP4: [GF4; 16] = [
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+563 | pub const LOG4: [u8; 16] = [
+    | ^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#items_after_test_module
+    = note: `#[deny(clippy::items_after_test_module)]` implied by `#[deny(warnings)]`
+    = help: move the items to before the test module was defined
+
+error: manual `!RangeInclusive::contains` implementation
+  --> src/util/chomp.rs:79:12
+   |
+79 |         if nr_bits < 1 || nr_bits > 8 || bit_count > self.bits_left {
+   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use: `!(1..=8).contains(&nr_bits)`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#manual_range_contains
+
+error: could not compile `bardecoder` (lib test) due to 246 previous errors

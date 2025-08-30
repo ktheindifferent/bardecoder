@@ -656,8 +656,7 @@ pub fn block_info(version: u32, level: &ECLevel) -> Result<Vec<BlockInfo>, QRErr
 
         (version, level) => Err(QRError {
             msg: format!(
-                "Unknown combination of version {} and level {:?}",
-                version, level
+                "Unknown combination of version {version} and level {level:?}"
             ),
         }),
     }?;
