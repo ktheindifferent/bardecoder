@@ -118,8 +118,24 @@ fn is_data(data: &QRData, loc: &AlignmentLocation, x: u32, y: u32) -> bool {
     true
 }
 
+/// Determines if a coordinate falls within an alignment pattern region.
+/// 
+/// This function checks if a given coordinate is part of either:
+/// 1. A finder pattern (coordinates 4-8)
+/// 2. An alignment pattern (based on the QR version's alignment location parameters)
+///
+/// # Bug Fix
+/// The original code had an operator precedence bug: `coord - 4 % 6 <= 4`
+/// Due to operator precedence, this was evaluated as `coord - (4 % 6) <= 4`,
+/// which simplified to `coord - 4 <= 4`, or `coord <= 8`.
+/// 
+/// This accidentally produced the correct behavior for detecting finder patterns
+/// at coordinates 4-8 when combined with the `coord >= 4` check.
+/// 
+/// The fix explicitly expresses this intent: `coord >= 4 && coord <= 8`
 fn is_alignment_coord(loc: &AlignmentLocation, coord: u32) -> bool {
-    if coord >= 4 && coord - 4 % 6 <= 4 {
+    // Check if coordinate falls within finder pattern regions (coordinates 4-8)
+    if coord >= 4 && coord <= 8 {
         return true;
     }
 
@@ -293,6 +309,131 @@ mod test {
                 assert!(is_alignment_coord(&al, x));
             } else {
                 assert!(!is_alignment_coord(&al, x));
+            }
+        }
+    }
+
+    #[test]
+    fn test_is_alignment_coord_edge_cases() {
+        // Test version 7 (first version with alignment patterns)
+        let al = alignment_location(7).unwrap();
+        
+        // Test coordinates 0-3 (should be false - too low for finder pattern check)
+        for coord in 0..4 {
+            assert!(!is_alignment_coord(&al, coord), "coord {} should be false", coord);
+        }
+        
+        // Test coordinates 4-8 (should be true - finder pattern region)
+        for coord in 4..=8 {
+            assert!(is_alignment_coord(&al, coord), "coord {} should be true (finder pattern)", coord);
+        }
+        
+        // Test coordinates 9-19 (should be false - between patterns)
+        for coord in 9..20 {
+            assert!(!is_alignment_coord(&al, coord), "coord {} should be false", coord);
+        }
+        
+        // Test alignment pattern positions for version 7 (start=22, step=16)
+        // The second condition matches coordinates at start-2 and repeating by step
+        for coord in 20..=24 {
+            assert!(is_alignment_coord(&al, coord), "coord {} should be true (alignment pattern)", coord);
+        }
+    }
+
+    #[test]
+    fn test_is_alignment_coord_operator_precedence() {
+        // This test specifically validates the fix for the operator precedence bug
+        // The original bug was: coord - 4 % 6 <= 4
+        // Which was evaluated as: coord - (4 % 6) <= 4, i.e., coord - 4 <= 4, i.e., coord <= 8
+        // This accidentally worked correctly for detecting finder patterns at 4-8!
+        // The fix explicitly checks for coord >= 4 && coord <= 8
+        
+        let al = alignment_location(10).unwrap();
+        
+        // Test critical values around the finder pattern
+        assert!(!is_alignment_coord(&al, 3), "coord 3 should be false");
+        assert!(is_alignment_coord(&al, 4), "coord 4 should be true (start of finder)");
+        assert!(is_alignment_coord(&al, 8), "coord 8 should be true (end of finder)");
+        assert!(!is_alignment_coord(&al, 9), "coord 9 should be false");
+        assert!(!is_alignment_coord(&al, 10), "coord 10 should be false");
+        
+        // Test alignment pattern for version 10 (start=28, step=22)
+        // Alignment patterns are at coordinates: start-2 to start+2
+        for coord in 26..=30 {
+            assert!(is_alignment_coord(&al, coord), "coord {} should be true (alignment)", coord);
+        }
+        assert!(!is_alignment_coord(&al, 31), "coord 31 should be false");
+    }
+
+    #[test]
+    fn test_is_alignment_coord_various_versions() {
+        // Test version 1 (no alignment patterns, only finder patterns)
+        let al1 = alignment_location(1).unwrap();
+        assert!(is_alignment_coord(&al1, 4), "v1: coord 4 in finder");
+        assert!(is_alignment_coord(&al1, 8), "v1: coord 8 in finder");
+        assert!(!is_alignment_coord(&al1, 9), "v1: coord 9 not in pattern");
+        
+        // Test version 10 (has alignment patterns)
+        let al10 = alignment_location(10).unwrap();
+        // Finder patterns at 4-8
+        for coord in 4..=8 {
+            assert!(is_alignment_coord(&al10, coord), "v10: coord {} should be in finder", coord);
+        }
+        // Check alignment pattern positions for version 10
+        // Version 10 has alignment at positions calculated by the formula
+        
+        // Test version 25 (multiple alignment patterns)
+        let al25 = alignment_location(25).unwrap();
+        assert!(is_alignment_coord(&al25, 4), "v25: coord 4 in finder");
+        assert!(is_alignment_coord(&al25, 8), "v25: coord 8 in finder");
+        
+        // Test version 40 (maximum version)
+        let al40 = alignment_location(40).unwrap();
+        assert!(is_alignment_coord(&al40, 4), "v40: coord 4 in finder");
+        assert!(is_alignment_coord(&al40, 8), "v40: coord 8 in finder");
+    }
+
+    #[test]
+    fn test_is_alignment_coord_pattern_spacing() {
+        // Test that alignment patterns are detected at correct intervals
+        let al = alignment_location(20).unwrap();
+        
+        // Finder pattern region (only 4-8 after fix)
+        assert!(is_alignment_coord(&al, 4));
+        assert!(is_alignment_coord(&al, 5));
+        assert!(is_alignment_coord(&al, 6));
+        assert!(is_alignment_coord(&al, 7));
+        assert!(is_alignment_coord(&al, 8));
+        
+        // Gap after finder - should be false
+        assert!(!is_alignment_coord(&al, 9));
+        assert!(!is_alignment_coord(&al, 10));
+        assert!(!is_alignment_coord(&al, 11));
+        
+        // Check that alignment patterns follow the expected step pattern
+        // based on the AlignmentLocation structure
+        let mut found_patterns = Vec::new();
+        for coord in 0..100 {
+            if is_alignment_coord(&al, coord) {
+                found_patterns.push(coord);
+            }
+        }
+        
+        // Verify that patterns are grouped (5 consecutive coordinates per pattern)
+        let mut i = 0;
+        while i < found_patterns.len() {
+            let start = found_patterns[i];
+            // Each pattern should have 5 consecutive coordinates
+            for j in 0..5 {
+                if i + j < found_patterns.len() {
+                    assert_eq!(found_patterns[i + j], start + j as u32,
+                        "Pattern starting at {} should have consecutive coords", start);
+                }
+            }
+            i += 5;
+            // Skip to next pattern group
+            while i < found_patterns.len() && found_patterns[i] == found_patterns[i-1] + 1 {
+                i += 1;
             }
         }
     }
