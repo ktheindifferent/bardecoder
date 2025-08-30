@@ -18,8 +18,8 @@ impl From<FromUtf8Error> for QRError {
     fn from(error: FromUtf8Error) -> Self {
         QRError {
             msg: format!(
-                "Unable to convert result to UTF-8, raw bytes: {:?}",
-                error.into_bytes()
+                "Unable to convert result to UTF-8, raw bytes: {bytes:?}",
+                bytes = error.into_bytes()
             ),
         }
     }

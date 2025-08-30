@@ -41,7 +41,7 @@ impl Decode<QRData, String, QRError> for QRDecoder {
             }
         }
 
-        debug!("TOTAL LENGTH {}", all_blocks.len());
+        debug!("TOTAL LENGTH {len}", len = all_blocks.len());
 
         let data = super::data::data(all_blocks, qr_data.version)?;
         Ok(data)
@@ -81,7 +81,7 @@ impl Decode<QRData, (String, QRInfo), QRError> for QRDecoderWithInfo {
             total_errors += error_count;
         }
 
-        debug!("TOTAL LENGTH {}", all_blocks.len());
+        debug!("TOTAL LENGTH {len}", len = all_blocks.len());
         let total_data = (all_blocks.len() as u32) * 8;
 
         let data = super::data::data(all_blocks, qr_data.version)?;
