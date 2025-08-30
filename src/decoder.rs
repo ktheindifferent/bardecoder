@@ -1,8 +1,6 @@
 use image::DynamicImage;
 use image::GrayImage;
 
-use failure::Error;
-use failure_derive::Fail;
 
 use crate::decode::{Decode, QRDecoder, QRDecoderWithInfo};
 use crate::detect::{Detect, LineScan, Location};
@@ -12,16 +10,16 @@ use crate::prepare::{BlockedMean, Prepare};
 use crate::util::qr::{QRData, QRError, QRInfo, QRLocation};
 
 /// Error type for `DecoderBuilder`
-#[derive(Debug, Fail)]
+#[derive(Debug, thiserror::Error)]
 pub enum BuilderError {
     /// The prepare component is required but was not provided
-    #[fail(display = "Cannot build Decoder without Prepare component")]
+    #[error("Cannot build Decoder without Prepare component")]
     MissingPrepare,
     /// The detect component is required but was not provided
-    #[fail(display = "Cannot build Decoder without Detect component")]
+    #[error("Cannot build Decoder without Detect component")]
     MissingDetect,
     /// The QR extract and decode components are required but were not provided
-    #[fail(display = "Cannot build Decoder without QR extract and decode components")]
+    #[error("Cannot build Decoder without QR extract and decode components")]
     MissingQR,
 }
 
@@ -39,7 +37,7 @@ impl<IMG, PREPD, RESULT> Decoder<IMG, PREPD, RESULT> {
     /// * prepare
     /// * detect
     /// * per detected code the associated extract and decode functions
-    pub fn decode(&self, source: &IMG) -> Vec<Result<RESULT, Error>> {
+    pub fn decode(&self, source: &IMG) -> Vec<Result<RESULT, QRError>> {
         let prepared = self.prepare.prepare(source);
         let locations = self.detect.detect(&prepared);
 
@@ -55,7 +53,7 @@ impl<IMG, PREPD, RESULT> Decoder<IMG, PREPD, RESULT> {
                     let extracted = self.qr.extract.extract(&prepared, qrloc);
                     let decoded = self.qr.decode.decode(extracted);
 
-                    all_decoded.push(decoded.map_err(Error::from));
+                    all_decoded.push(decoded);
                 }
             }
         }

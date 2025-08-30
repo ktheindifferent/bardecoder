@@ -1,6 +1,6 @@
 //! Decode data extracted from an image
 
-use failure::Fail;
+use std::error::Error;
 
 mod qr;
 
@@ -39,7 +39,7 @@ pub use self::qr::decoder::{QRDecoder, QRDecoderWithInfo};
 /// [`Decoder`]: ../struct.Decoder.html
 pub trait Decode<DATA, RESULT, ERROR>
 where
-    ERROR: Fail,
+    ERROR: Error,
 {
     /// Does the actual decoding
     fn decode(&self, data: Result<DATA, ERROR>) -> Result<RESULT, ERROR>;

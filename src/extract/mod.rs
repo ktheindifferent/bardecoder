@@ -1,6 +1,6 @@
 //! Extract data from an image
 
-use failure::Fail;
+use std::error::Error;
 
 mod qr;
 
@@ -43,7 +43,7 @@ pub use self::qr::QRExtractor;
 /// [`here`]: ../decode/trait.Decode.html
 pub trait Extract<PREPD, LOC, DATA, ERROR>
 where
-    ERROR: Fail,
+    ERROR: Error,
 {
     /// Does the actual extracting
     fn extract(&self, prepared: &PREPD, loc: LOC) -> Result<DATA, ERROR>;
