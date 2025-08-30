@@ -13,7 +13,7 @@ pub fn data(input: Vec<u8>, version: u32) -> Result<String, QRError> {
             0b0000 => break,
             _ => {
                 return Err(QRError {
-                    msg: format!("Mode {:04b} not yet implemented.", mode),
+                    msg: format!("Mode {mode:04b} not yet implemented."),
                 })
             }
         }
@@ -29,7 +29,7 @@ fn numeric(chomp: &mut Chomp, version: u32) -> Result<String, QRError> {
         27..=40 => 14,
         _ => {
             return Err(QRError {
-                msg: format!("Unknown version {}", version),
+                msg: format!("Unknown version {version}"),
             });
         }
     };
@@ -37,7 +37,7 @@ fn numeric(chomp: &mut Chomp, version: u32) -> Result<String, QRError> {
     let mut length = chomp.chomp_or_u16(
         length_bits,
         QRError {
-            msg: format!("Could not read {} bits for numeric length", length_bits),
+            msg: format!("Could not read {length_bits} bits for numeric length"),
         },
     )?;
 
@@ -46,7 +46,7 @@ fn numeric(chomp: &mut Chomp, version: u32) -> Result<String, QRError> {
     while length > 0 {
         if length >= 3 {
             let digits = read_bits_u16(chomp, 10)?;
-            result.push_str(&format!("{:03}", digits));
+            result.push_str(&format!("{digits:03}"));
 
             length -= 3;
             continue;
@@ -54,20 +54,20 @@ fn numeric(chomp: &mut Chomp, version: u32) -> Result<String, QRError> {
 
         if length == 2 {
             let digits = read_bits_u16(chomp, 7)?;
-            result.push_str(&format!("{:02}", digits));
+            result.push_str(&format!("{digits:02}"));
 
             break;
         }
 
         if length == 1 {
             let digits = read_bits_u16(chomp, 4)?;
-            result.push_str(&format!("{:01}", digits));
+            result.push_str(&format!("{digits:01}"));
 
             break;
         }
     }
 
-    debug!("NUMERIC {:?}", result);
+    debug!("NUMERIC {result:?}");
 
     Ok(result)
 }
@@ -85,7 +85,7 @@ fn alphanumeric(chomp: &mut Chomp, version: u32) -> Result<String, QRError> {
         27..=40 => 13,
         _ => {
             return Err(QRError {
-                msg: format!("Unknown version {}", version),
+                msg: format!("Unknown version {version}"),
             });
         }
     };
@@ -94,8 +94,7 @@ fn alphanumeric(chomp: &mut Chomp, version: u32) -> Result<String, QRError> {
         length_bits,
         QRError {
             msg: format!(
-                "Could not read {} bits for alphanumeric length",
-                length_bits
+                "Could not read {length_bits} bits for alphanumeric length"
             ),
         },
     )?;
@@ -120,7 +119,7 @@ fn alphanumeric(chomp: &mut Chomp, version: u32) -> Result<String, QRError> {
         }
     }
 
-    debug!("ALPHANUMERIC {:?}", result);
+    debug!("ALPHANUMERIC {result:?}");
 
     Ok(result)
 }
@@ -132,7 +131,7 @@ fn eight_bit(chomp: &mut Chomp, version: u32) -> Result<String, QRError> {
         27..=40 => 16,
         _ => {
             return Err(QRError {
-                msg: format!("Unknown version {}", version),
+                msg: format!("Unknown version {version}"),
             });
         }
     };
@@ -141,8 +140,7 @@ fn eight_bit(chomp: &mut Chomp, version: u32) -> Result<String, QRError> {
         length_bits,
         QRError {
             msg: format!(
-                "Could not read {} bits for alphanumeric length",
-                length_bits
+                "Could not read {length_bits} bits for alphanumeric length"
             ),
         },
     )?;
@@ -153,7 +151,7 @@ fn eight_bit(chomp: &mut Chomp, version: u32) -> Result<String, QRError> {
         result.push(read_bits(chomp, 8)?);
     }
 
-    debug!("EIGHT BIT RAW {:?}", result);
+    debug!("EIGHT BIT RAW {result:?}");
 
     let mut may_be_utf8 = false;
 
@@ -166,14 +164,14 @@ fn eight_bit(chomp: &mut Chomp, version: u32) -> Result<String, QRError> {
 
     let final_result = if may_be_utf8 {
         let utf8 = String::from_utf8(result)?;
-        debug!("EIGHT BIT AS UTF-8 {:?}", utf8);
+        debug!("EIGHT BIT AS UTF-8 {utf8:?}");
         utf8
     } else {
         let mut iso88591 = String::new();
         for r in result {
             iso88591.push(r as char);
         }
-        debug!("EIGHT BIT AS ISO 8859-1 {:?}", iso88591);
+        debug!("EIGHT BIT AS ISO 8859-1 {iso88591:?}");
         iso88591
     };
 
@@ -184,7 +182,7 @@ fn read_bits(chomp: &mut Chomp, bits: u8) -> Result<u8, QRError> {
     chomp.chomp_or(
         bits,
         QRError {
-            msg: format!("Could not read {} bits", bits),
+            msg: format!("Could not read {bits} bits"),
         },
     )
 }
@@ -193,7 +191,7 @@ fn read_bits_u16(chomp: &mut Chomp, bits: u8) -> Result<u16, QRError> {
     chomp.chomp_or_u16(
         bits,
         QRError {
-            msg: format!("Could not read {} bits", bits),
+            msg: format!("Could not read {bits} bits"),
         },
     )
 }

@@ -37,7 +37,6 @@ pub use self::qr::decoder::{QRDecoder, QRDecoderWithInfo};
 /// [`Extract`]: ../extract/trait.Extract.html
 /// [`here`]: ../extract/trait.Extract.html
 /// [`Decoder`]: ../struct.Decoder.html
-
 pub trait Decode<DATA, RESULT, ERROR>
 where
     ERROR: Error,

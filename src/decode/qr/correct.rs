@@ -32,10 +32,10 @@ pub fn correct_with_error_count(
 
     for i in 0..locs.len() {
         debug!(
-            "FIXING LOCATION {} FROM {:08b} TO {:08b}",
-            block_info.total_per as usize - 1 - locs[i] as usize,
-            block[block_info.total_per as usize - 1 - locs[i] as usize],
-            block[block_info.total_per as usize - 1 - locs[i] as usize] ^ distance[i].0
+            "FIXING LOCATION {loc} FROM {from:08b} TO {to:08b}",
+            loc = block_info.total_per as usize - 1 - locs[i] as usize,
+            from = block[block_info.total_per as usize - 1 - locs[i] as usize],
+            to = block[block_info.total_per as usize - 1 - locs[i] as usize] ^ distance[i].0
         );
 
         error_count += distance[i].0.count_ones();
@@ -56,7 +56,7 @@ fn calculate_syndromes(block: &[u8], block_info: &BlockInfo) -> (bool, Vec<GF8>)
 
     let mut all_fine = true;
     for i in 0..block_info.ec_cap * 2 {
-        syndromes[i as usize] = syndrome(&block, EXP8[i as usize]);
+        syndromes[i as usize] = syndrome(block, EXP8[i as usize]);
         if syndromes[i as usize] != GF8(0) {
             all_fine = false;
         }
@@ -103,12 +103,12 @@ fn find_locs(block_info: &BlockInfo, syndromes: &[GF8]) -> Result<Vec<usize>, QR
         check_value = check_value + x;
 
         if check_value == GF8(0) {
-            debug!("LOC {:?} {} ", exp, i);
+            debug!("LOC {exp:?} {i} ");
             locs.push(i);
         }
     }
 
-    debug!("LOCS {:?}", locs);
+    debug!("LOCS {locs:?}");
 
     Ok(locs)
 }
@@ -117,7 +117,7 @@ fn calculate_distances(syndromes: &[GF8], locs: &[usize]) -> Option<Vec<GF8>> {
     let mut eq = vec![vec![GF8(0); locs.len() + 1]; locs.len()];
     for i in 0..locs.len() {
         for j in 0..locs.len() {
-            eq[i][j] = EXP8[(i * locs[j] as usize) % 255];
+            eq[i][j] = EXP8[(i * locs[j]) % 255];
         }
 
         eq[i][locs.len()] = syndromes[i];
@@ -130,7 +130,7 @@ fn solve<T>(mut eq: Vec<Vec<T>>, zero: T, one: T, fail_on_rank: bool) -> Option<
 where
     T: Div<Output = T> + Mul<Output = T> + Sub<Output = T> + Copy + PartialEq,
 {
-    let num_eq = eq.len() as usize;
+    let num_eq = eq.len();
     if num_eq == 0 {
         return None;
     }
